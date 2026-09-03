@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bitter:ital,wght@0,400;0,600;0,700;1,400&amp;family=Jost:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet">
+<script src="./image-slot.js"></script>
+<style>
+  @font-face { font-family:'Avenir Next LT Pro'; src:url('fonts/AvenirNextLTPro-Regular.otf') format('opentype'); font-weight:400; font-style:normal; font-display:swap; }
+  @font-face { font-family:'Avenir Next LT Pro'; src:url('fonts/AvenirNextLTPro-It.otf') format('opentype'); font-weight:400; font-style:italic; font-display:swap; }
+  @font-face { font-family:'Avenir Next LT Pro'; src:url('fonts/AvenirNextLTPro-Regular.otf') format('opentype'); font-weight:500; font-style:normal; font-display:swap; }
+  @font-face { font-family:'Avenir Next LT Pro'; src:url('fonts/AvenirNextLTPro-Demi.otf') format('opentype'); font-weight:600; font-style:normal; font-display:swap; }
+  @font-face { font-family:'Avenir Next LT Pro'; src:url('fonts/AvenirNextLTPro-It.otf') format('opentype'); font-weight:500; font-style:italic; font-display:swap; }
+  @font-face { font-family:'Avenir Next LT Pro'; src:url('fonts/AvenirNextLTPro-MediumIt.otf') format('opentype'); font-weight:600; font-style:italic; font-display:swap; }
+  @font-face { font-family:'Avenir Next LT Pro'; src:url('fonts/AvenirNextLTPro-Bold.otf') format('opentype'); font-weight:700; font-style:normal; font-display:swap; }
+  @font-face { font-family:'Avenir Next LT Pro'; src:url('fonts/AvenirNextLTPro-Heavy.otf') format('opentype'); font-weight:800 900; font-style:normal; font-display:swap; }
+  @font-face { font-family:'Avenir Next LT Pro'; src:url('fonts/AvenirNextLTPro-HeavyIt.otf') format('opentype'); font-weight:800 900; font-style:italic; font-display:swap; }
+  html { scroll-behavior:smooth; color-scheme:light; }
+  body { margin:0; background:#FFFFFF; }
+  a { color:#1593D7; text-decoration:none; }
+  a:hover { color:#8A278C; }
+  * { box-sizing:border-box; }
+  @media (max-width: 1024px) {
+    .sm-grid-3 { grid-template-columns: repeat(2,1fr) !important; }
+    .sm-award-row { flex-direction:column !important; padding:40px 24px !important; }
+    .sm-award-copy { max-width:100% !important; }
+    .sm-award-seam { display:none !important; }
+  }
+  @media (max-width: 768px) {
+    .sm-header-row { flex-wrap:wrap; gap:16px !important; }
+    .sm-nav { flex-wrap:wrap; }
+    .sm-util-row { justify-content:center !important; flex-wrap:wrap; gap:14px !important; }
+    .sm-search-box { width:100% !important; }
+    .sm-grid-3 { grid-template-columns: 1fr !important; }
+  }
+  @media (max-width: 480px) { .sm-footer-grid { grid-template-columns: 1fr !important; } }
+  .sm-scroll-hide { scrollbar-width:none; -ms-overflow-style:none; }
+  .sm-scroll-hide::-webkit-scrollbar { display:none; }
+</style>
+</helmet>
+
+<div id="top" style="font-family:'Jost',system-ui,-apple-system,sans-serif; color: #1C1656; overflow-x: hidden; background-color: #FFFFFF">
+
+  <div style="background:#F6F6F8; color:#1C1656; font-size:14px; font-weight:500;">
+    <div class="sm-util-row" style="max-width:1600px; margin:0 auto; padding:10px 40px; display:flex; justify-content:flex-end; align-items:center; gap:16px; flex-wrap:wrap; border-bottom:1px solid rgba(28,22,86,0.06);">
+      <div style="display:flex; align-items:center; gap:24px; flex-wrap:wrap; font-size:14px; font-weight:500; line-height:20px; color:#1C1656;">
+        <a href="#top" style="color:#1C1656; font-weight:500;" style-hover="color:#5E50A1; text-decoration:none;">Register</a>
+        <a href="#top" style="color:#1C1656; font-weight:500; display:flex; align-items:center; gap:6px;" style-hover="color:#5E50A1; text-decoration:none;"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="8" r="4"></circle><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"></path></svg>Login</a>
+        <a href="#top" style="color:#1C1656; font-weight:500; display:flex; align-items:center; gap:6px;" style-hover="color:#5E50A1; text-decoration:none;"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 20s-7-4.4-9.5-8.8C.8 8 2 4.5 5.5 3.8 8 3.3 10 4.5 12 7c2-2.5 4-3.7 6.5-3.2C22 4.5 23.2 8 21.5 11.2 19 15.6 12 20 12 20z"></path></svg>Wishlist (0)</a>
+        <a href="#top" style="color:#1C1656; font-weight:500; display:flex; align-items:center; gap:6px;" style-hover="color:#5E50A1; text-decoration:none;"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="9" cy="20" r="1.4"></circle><circle cx="18" cy="20" r="1.4"></circle><path d="M2 3h2l2.4 12.2a2 2 0 002 1.8h8.6a2 2 0 002-1.6L21 8H6"></path></svg>Shopping Cart (0)</a>
+        <span style="width:1px; height:20px; background:rgba(28,22,86,0.3);"></span>
+        <a href="#top" style="background:#5E50A1; color:#FFFFFF; font-family:'Jost',system-ui,-apple-system,sans-serif; font-weight:500; font-size:14px; line-height:20px; padding:8px 16px; border-radius:999px;" style-hover="background:rgba(94,80,161,0.9); color:#FFFFFF;">Join Sigma</a>
+      </div>
+    </div>
+  </div>
+
+  <div style="background:#FFFFFF; box-shadow:0 1px 0 #DDE6EC; position:relative; z-index:2;">
+    <div class="sm-header-row" style="max-width:1600px; margin:0 auto; padding:20px 40px; display:flex; align-items:center; gap:36px; flex-wrap:wrap;">
+      <a href="#top"><img src="sigma-marketplace-logo.png" alt="Sigma Marketplace" width="150" height="92" style="display:block; height:91px; width:auto;"></a>
+      <nav class="sm-nav" style="display:flex; align-items:center; gap:24px; flex-wrap:wrap; margin-left:auto;">
+        <sc-for list="{{ navItems }}" as="item" hint-placeholder-count="6">
+          <sc-if value="{{ item.hasMenu }}" hint-placeholder-val="{{ false }}">
+            <div style="position:relative; display:flex; align-items:center; align-self:stretch;" onMouseEnter="{{ item.onOpen }}" onMouseLeave="{{ item.onClose }}">
+              <a href="{{ item.href }}" style="{{ item.style }}" style-hover="color:#5E50A1; border-bottom:5px solid #00B9DD; text-decoration:none;">{{ item.label }}</a>
+              <sc-if value="{{ item.menuOpen }}" hint-placeholder-val="{{ false }}">
+                <div style="position:absolute; top:calc(100% + 1px); left:0; background:#1C1656; border-radius:10px; box-shadow:0 24px 48px -8px rgba(0,0,0,0.45), 0 8px 20px -8px rgba(0,0,0,0.35); padding:32px; display:flex; flex-direction:column; gap:16px; z-index:20; min-width:260px;">
+                  <sc-for list="{{ item.subLinks }}" as="cat" hint-placeholder-count="4">
+                    <a href="{{ cat.href }}" style="font-family:'Jost',system-ui,-apple-system,sans-serif; font-size:15px; font-weight:700; color:#FFFFFF; white-space:nowrap;" style-hover="color:#00B9DD; text-decoration:none;">{{ cat.label }}</a>
+                  </sc-for>
+                </div>
+              </sc-if>
+            </div>
+          </sc-if>
+          <sc-if value="{{ item.noMenu }}" hint-placeholder-val="{{ true }}">
+            <a href="{{ item.href }}" style="{{ item.style }}" style-hover="color:#5E50A1; border-bottom:5px solid #00B9DD; text-decoration:none;">{{ item.label }}</a>
+          </sc-if>
+        </sc-for>
+      </nav>
+      <div class="sm-search-box" style="display:flex; align-items:center; background:#EFF7FA; border-radius:999px; padding:9px 16px; gap:8px; width:220px;">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#5E50A1" stroke-width="1.8"><circle cx="10.5" cy="10.5" r="6.5"></circle><path d="M20 20l-4.3-4.3"></path></svg>
+        <input placeholder="Search" style="border:none; background:transparent; outline:none; font-family:'Jost',system-ui,-apple-system,sans-serif; font-size:15px; color:#1C1440; width:100%;">
+      </div>
+    </div>
+  </div>
+
+  <!-- Award banner -->
+  <div style="position:relative; min-height:420px; overflow:hidden; background:#1C1656;">
+    <div class="sm-award-seam" style="position:absolute; inset:0; background:#EFF7FA; clip-path:polygon(60% 0,100% 0,100% 100%,50% 100%);"></div>
+    <div class="sm-award-seam" style="position:absolute; inset:0; background:linear-gradient(180deg,#8A278C 0%, rgba(28,22,86,0) 32%, rgba(28,22,86,0) 68%, #00B9DD 100%); clip-path:polygon(60% 0,62.8% 0,52.8% 100%,50% 100%);"></div>
+    <img src="sigma-laurel.svg" alt="" style="position:absolute; left:1%; bottom:-10%; height:40%; width:auto; opacity:0.85; pointer-events:none;">
+    <div class="sm-award-row" style="position:relative; max-width:1600px; margin:0 auto; width:100%; display:flex; align-items:center; padding:64px 40px; gap:48px; flex-wrap:wrap;">
+      <div class="sm-award-copy" style="flex:1 1 320px; max-width:400px; color:#FFFFFF; z-index:1;">
+        <div style="font-family:'Jost',system-ui,-apple-system,sans-serif; font-size:13px; font-weight:700; letter-spacing:0.16em; text-transform:uppercase; color:#9FD8F2; margin-bottom:14px;">{{ awardEyebrow }}</div>
+        <div style="font-family:'Jost',system-ui,-apple-system,sans-serif; font-size:40px; font-weight:800; letter-spacing:-0.02em; line-height:1.15; margin-bottom:20px;">{{ awardTitle }}</div>
+        <div style="font-family:'Bitter','Bitter Fallback',Georgia,serif; font-size:19px; line-height:1.6; color:#E4E9F6;">{{ awardBody }}</div>
+      </div>
+      <div style="flex:1 1 320px; display:flex; justify-content:flex-end; z-index:1;">
+        <image-slot id="{{ awardImageId }}" src="{{ awardSlideImage }}" shape="rect" fit="contain" placeholder="{{ awardImagePlaceholder }}" style="width:100%; max-width:280px; aspect-ratio:3/4; box-shadow:0 20px 45px rgba(28,22,86,0.35); border-radius:4px;"></image-slot>
+      </div>
+    </div>
+  </div>
+  <div style="max-width:1600px; margin:0 auto; padding:20px 40px 0; display:flex; justify-content:flex-end; gap:10px;">
+    <button onClick="{{ prevAward }}" style="{{ arrowStyleAwardPrev }}"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"></path></svg></button>
+    <button onClick="{{ nextAward }}" style="{{ arrowStyleAwardNext }}"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"></path></svg></button>
+  </div>
+
+  <!-- Best Selling Books -->
+  <div style="max-width:1600px; margin:0 auto; padding:56px 40px;">
+    <div style="font-family:'Jost',system-ui,-apple-system,sans-serif; font-size:13px; font-weight:700; letter-spacing:0.16em; text-transform:uppercase; color:#5E50A1; margin-bottom:12px;">Featured</div>
+    <div style="font-family:'Jost',system-ui,-apple-system,sans-serif; font-size:40px; font-weight:800; letter-spacing:-0.02em; color:#1C1656; margin-bottom:40px;">Best Selling Books</div>
+    <div class="sm-grid-3" style="display:grid; grid-template-columns:repeat(3,1fr); gap:36px;">
+      <sc-for list="{{ bestSellers }}" as="b" hint-placeholder-count="3">
+        <a href="{{ b.link }}" style="display:block; text-decoration:none; color:#1C1656; background:#FFFFFF; border-radius:16px; box-shadow:0 10px 30px rgba(28,22,86,0.10); overflow:hidden;" style-hover="box-shadow:0 16px 40px rgba(28,22,86,0.20); text-decoration:none;">
+          <div style="width:100%; aspect-ratio:24/19; background:#EFF7FA;">
+            <image-slot id="best-{{ $index }}" src="{{ b.image }}" shape="rect" fit="contain" placeholder="{{ b.title }}" style="width:100%; height:100%;"></image-slot>
+          </div>
+          <div style="padding:22px;">
+            <div style="font-family:'Jost',system-ui,-apple-system,sans-serif; font-weight:800; font-size:19px; line-height:1.4; margin-bottom:10px; color:#1C1656;">{{ b.title }}</div>
+            <div style="font-family:'Jost',system-ui,-apple-system,sans-serif; font-weight:800; font-size:22px; color:#1593D7;">{{ b.price }}</div>
+          </div>
+        </a>
+      </sc-for>
+    </div>
+  </div>
+
+  <!-- Nursing Books carousel -->
+  <div style="padding:0 0 40px;">
+    <div style="max-width:1600px; margin:0 auto; padding:0 40px;">
+      <div style="font-family:'Jost',system-ui,-apple-system,sans-serif; font-size:13px; font-weight:700; letter-spacing:0.16em; text-transform:uppercase; color:#5E50A1; margin-bottom:12px;">Best Sellers</div>
+      <div style="font-family:'Jost',system-ui,-apple-system,sans-serif; font-size:40px; font-weight:800; letter-spacing:-0.02em; color:#1C1656; margin-bottom:32px;">Nursing Books</div>
+      <div style="position:relative;">
+        <div ref="{{ booksRef }}" class="sm-scroll-hide" style="display:flex; gap:28px; overflow-x:auto; scroll-behavior:smooth; scroll-snap-type:x mandatory; padding:2px 2px 8px;">
+          <sc-for list="{{ nursingBooks }}" as="b" hint-placeholder-count="6">
+            <div style="flex: 0 0 calc((100% - 112px)/5); min-width:200px; scroll-snap-align:start; background:#FFFFFF; border-radius:16px; box-shadow:0 10px 30px rgba(28,22,86,0.10); overflow:hidden;">
+              <a href="{{ b.link }}" style="display:block; aspect-ratio:3/4; overflow:hidden; background:#EFF7FA;">
+                <image-slot id="nurse-book-{{ $index }}" src="{{ b.image }}" shape="rect" fit="contain" placeholder="{{ b.title }}" style="width:100%; height:100%;"></image-slot>
+              </a>
+              <div style="padding:16px;">
+                <div style="font-family:'Jost',system-ui,-apple-system,sans-serif; font-weight:700; font-size:15px; line-height:1.35; color:#1C1656; margin-bottom:8px; min-height:42px; display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden;">{{ b.title }}</div>
+                <div style="font-family:'Jost',system-ui,-apple-system,sans-serif; font-weight:800; font-size:17px; color:#1593D7;">{{ b.price }}</div>
+              </div>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+      <div style="display:flex; justify-content:flex-end; gap:10px; margin-top:16px;">
+        <button onClick="{{ scrollBooksLeft }}" style="{{ arrowStyleBooksLeft }}"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"></path></svg></button>
+        <button onClick="{{ scrollBooksRight }}" style="{{ arrowStyleBooksRight }}"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"></path></svg></button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Courses and Programs carousel -->
+  <div style="padding:0 0 40px;">
+    <div style="max-width:1600px; margin:0 auto; padding:0 40px;">
+      <div style="font-family:'Jost',system-ui,-apple-system,sans-serif; font-size:13px; font-weight:700; letter-spacing:0.16em; text-transform:uppercase; color:#5E50A1; margin-bottom:12px;">Best Sellers</div>
+      <div style="font-family:'Jost',system-ui,-apple-system,sans-serif; font-size:40px; font-weight:800; letter-spacing:-0.02em; color:#1C1656; margin-bottom:32px;">Courses and Programs</div>
+      <div style="position:relative;">
+        <div ref="{{ coursesRef }}" class="sm-scroll-hide" style="display:flex; gap:28px; overflow-x:auto; scroll-behavior:smooth; scroll-snap-type:x mandatory; padding:2px 2px 8px;">
+          <sc-for list="{{ courses }}" as="c" hint-placeholder-count="6">
+            <div style="flex: 0 0 calc((100% - 112px)/5); min-width:200px; scroll-snap-align:start; background:#FFFFFF; border-radius:16px; box-shadow:0 10px 30px rgba(28,22,86,0.10); overflow:hidden;">
+              <a href="{{ c.link }}" style="display:block; aspect-ratio:3/4; overflow:hidden; background:#EFF7FA;">
+                <image-slot id="course-{{ $index }}" src="{{ c.image }}" shape="rect" fit="contain" placeholder="{{ c.title }}" style="width:100%; height:100%;"></image-slot>
+              </a>
+              <div style="padding:16px;">
+                <div style="font-family:'Jost',system-ui,-apple-system,sans-serif; font-weight:700; font-size:15px; line-height:1.35; color:#1C1656; min-height:42px; display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden;">{{ c.title }}</div>
+              </div>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+      <div style="display:flex; justify-content:flex-end; gap:10px; margin-top:16px;">
+        <button onClick="{{ scrollCoursesLeft }}" style="{{ arrowStyleCoursesLeft }}"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"></path></svg></button>
+        <button onClick="{{ scrollCoursesRight }}" style="{{ arrowStyleCoursesRight }}"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"></path></svg></button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Jewelry carousel -->
+  <div style="padding:0 0 40px;">
+    <div style="max-width:1600px; margin:0 auto; padding:0 40px;">
+      <div style="font-family:'Jost',system-ui,-apple-system,sans-serif; font-size:13px; font-weight:700; letter-spacing:0.16em; text-transform:uppercase; color:#5E50A1; margin-bottom:12px;">Best Sellers</div>
+      <div style="font-family:'Jost',system-ui,-apple-system,sans-serif; font-size:40px; font-weight:800; letter-spacing:-0.02em; color:#1C1656; margin-bottom:32px;">Jewelry</div>
+      <div style="position:relative;">
+        <div ref="{{ jewelryRef }}" class="sm-scroll-hide" style="display:flex; gap:28px; overflow-x:auto; scroll-behavior:smooth; scroll-snap-type:x mandatory; padding:2px 2px 8px;">
+          <sc-for list="{{ jewelry }}" as="j" hint-placeholder-count="6">
+            <div style="flex: 0 0 calc((100% - 112px)/5); min-width:200px; scroll-snap-align:start; background:#FFFFFF; border-radius:16px; box-shadow:0 10px 30px rgba(28,22,86,0.10); overflow:hidden;">
+              <a href="{{ j.link }}" style="display:block; aspect-ratio:3/4; overflow:hidden; background:#EFF7FA;">
+                <image-slot id="jewelry-{{ $index }}" src="{{ j.image }}" shape="rect" fit="contain" placeholder="{{ j.title }}" style="width:100%; height:100%;"></image-slot>
+              </a>
+              <div style="padding:16px;">
+                <div style="font-family:'Jost',system-ui,-apple-system,sans-serif; font-weight:700; font-size:15px; line-height:1.35; color:#1C1656; margin-bottom:8px; min-height:42px; display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden;">{{ j.title }}</div>
+                <div style="font-family:'Jost',system-ui,-apple-system,sans-serif; font-weight:800; font-size:17px; color:#1593D7;">{{ j.price }}</div>
+              </div>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+      <div style="display:flex; justify-content:flex-end; gap:10px; margin-top:16px;">
+        <button onClick="{{ scrollJewelryLeft }}" style="{{ arrowStyleJewelryLeft }}"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"></path></svg></button>
+        <button onClick="{{ scrollJewelryRight }}" style="{{ arrowStyleJewelryRight }}"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"></path></svg></button>
+      </div>
+    </div>
+  </div>
+
+  <div style="position:relative; height:120px; overflow:hidden;">
+    <svg preserveAspectRatio="none" viewBox="0 0 1684 102" style="position:absolute; inset:0; width:100%; height:100%; display:block;">
+      <path fill="#1C1656" d="M0 93V102H1684V0C1380.12 4.59259 621.479 29.6222 0 93Z"></path>
+      <path fill="none" stroke="#00B9DD" stroke-width="4" stroke-linecap="round" d="M2 64.8288C204.004 49.8762 752.782 3.85989 1682 18.8125"></path>
+      <path fill="none" stroke="#8A278C" stroke-width="4" stroke-linecap="round" d="M2 11.0352C311.74 11.826 1081.37 30.7262 1682 100.001"></path>
+    </svg>
+  </div>
+
+  <div style="background:#1C1656; color:#E4E9F6; position:relative; overflow:hidden;">
+    <div style="max-width:1600px; margin:0 auto; padding:70px 40px 20px; position:relative;">
+      <div class="sm-footer-grid" style="display:grid; grid-template-columns:1.2fr 1fr 1fr 1fr; gap:40px; padding-bottom:32px;">
+        <div style="height:100%; display:flex; flex-direction:column;">
+          <img src="sigma-marketplace-logo-footer.png" alt="Sigma Marketplace" width="150" height="92" style="display:block; width:232px; height:auto;">
+          <div style="font-family:'Jost',system-ui,-apple-system,sans-serif; font-weight:700; color:#FFFFFF; margin:22px 0 10px; font-size:15px;">Connect with Sigma Nursing</div>
+          <div style="display:flex; gap:8px; margin-top:auto;">
+            <a href="https://facebook.com/sigmanursing" aria-label="Facebook" style="width:40px; height:40px; border-radius:50%; display:flex; align-items:center; justify-content:center; background-color:#5E50A1;"><svg width="18" height="18" viewBox="0 0 24 24" fill="#FFFFFF"><path d="M13 22v-9h3l.5-4H13V6.5c0-1.1.3-1.9 1.9-1.9H17V1.1C16.6 1 15.4 1 14 1c-2.9 0-4.9 1.8-4.9 5v3H6v4h3.1v9z"></path></svg></a>
+            <a href="https://www.linkedin.com/company/sigma-theta-tau-international/" aria-label="LinkedIn" style="width:40px; height:40px; border-radius:50%; display:flex; align-items:center; justify-content:center; background-color:#5E50A1;"><svg width="18" height="18" viewBox="0 0 24 24" fill="#FFFFFF"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9h4v12H3zM9 9h3.8v1.7h.05c.53-1 1.83-1.7 3.15-1.7C19.2 9 20 11 20 13.9V21h-4v-6.3c0-1.5-.03-3.4-2.1-3.4-2.1 0-2.4 1.6-2.4 3.3V21H9z"></path></svg></a>
+            <a href="https://instagram.com/sigmanursing" aria-label="Instagram" style="width:40px; height:40px; border-radius:50%; display:flex; align-items:center; justify-content:center; background-color:#5E50A1;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"></rect><circle cx="12" cy="12" r="4"></circle><circle cx="17.5" cy="6.5" r="0.6" fill="#FFFFFF" stroke="none"></circle></svg></a>
+            <a href="https://www.youtube.com/@SigmaHeadquarters" aria-label="YouTube" style="width:40px; height:40px; border-radius:50%; display:flex; align-items:center; justify-content:center; background-color:#5E50A1;"><svg width="18" height="18" viewBox="0 0 24 24" fill="#FFFFFF"><path d="M23 12s0-3.6-.5-5.3a3 3 0 0 0-2.1-2.1C18.7 4 12 4 12 4s-6.7 0-8.4.6a3 3 0 0 0-2.1 2.1C1 8.4 1 12 1 12s0 3.6.5 5.3a3 3 0 0 0 2.1 2.1C5.3 20 12 20 12 20s6.7 0 8.4-.6a3 3 0 0 0 2.1-2.1C23 15.6 23 12 23 12z" fill="none" stroke="#FFFFFF" stroke-width="1.6"></path><path d="M10 9l6 3-6 3z" fill="#FFFFFF"></path></svg></a>
+            <a href="https://thecircle.sigmanursing.org/home" aria-label="The Circle" style="width:40px; height:40px; border-radius:50%; display:flex; align-items:center; justify-content:center; background-color:#5E50A1;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="1.8"><circle cx="12" cy="12" r="9"></circle><circle cx="12" cy="12" r="3.2" fill="#FFFFFF" stroke="none"></circle></svg></a>
+          </div>
+        </div>
+        <div style="grid-column:2 / span 3; height:100%;">
+          <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:40px; height:100%;">
+            <div style="display:flex; flex-direction:column; height:100%; padding-top:71px; position:relative;">
+              <div style="font-family:'Bitter','Bitter Fallback',Georgia,serif; font-size:15px; color:#E4E9F6; line-height:1.6; margin-bottom:16px;">550 W. North St., Suite 120<br>Indianapolis, IN 46202<br>United States</div>
+              <div style="font-family:'Bitter','Bitter Fallback',Georgia,serif; font-size:15px; color:#E4E9F6; line-height:1.6; margin-bottom:16px;"><a href="tel:+18886347575" style="color:#E4E9F6;" style-hover="color:rgba(255,255,255,0.7); text-decoration:none;">888.634.7575</a> (US/CA toll-free)<br><a href="tel:+13176348171" style="color:#E4E9F6;" style-hover="color:rgba(255,255,255,0.7); text-decoration:none;">+1.317.634.8171</a> (International)</div>
+              <div style="font-family:'Bitter','Bitter Fallback',Georgia,serif; font-size:15px; color:#E4E9F6; line-height:1.6; white-space:nowrap; margin-top:auto;">Monday–Friday | 8:00 a.m. – 5:00 p.m. ET</div>
+              <div style="position:absolute; left:calc(100% + 40px); bottom:0; display:flex; flex-direction:column; gap:6px; white-space:nowrap;">
+                <span style="white-space:nowrap;"><a href="#" style="color:#FFFFFF; font-size:14px;" style-hover="color:rgba(255,255,255,0.7); text-decoration:none;">Contact Us</a> &nbsp;|&nbsp; <a href="#" style="color:#FFFFFF; font-size:14px;" style-hover="color:rgba(255,255,255,0.7); text-decoration:none;">Privacy Policy</a> &nbsp;|&nbsp; <a href="#" style="color:#FFFFFF; font-size:14px;" style-hover="color:rgba(255,255,255,0.7); text-decoration:none;">Terms of Service</a></span>
+                <span style="font-size:14px; color:#FFFFFF; white-space:nowrap;">© 2026 Sigma Theta Tau International Honor Society of Nursing. All rights reserved.</span>
+              </div>
+            </div>
+            <div style="display:flex; flex-direction:column; gap:8px; padding-top:71px;">
+              <a href="#" style="color:#FFFFFF; font-size:16px; font-family:'Jost',system-ui,-apple-system,sans-serif; font-weight:600; white-space:nowrap;" style-hover="color:rgba(255,255,255,0.7); text-decoration:none;">My Account</a>
+              <a href="#" style="color:#FFFFFF; font-size:16px; font-family:'Jost',system-ui,-apple-system,sans-serif; font-weight:600; white-space:nowrap;" style-hover="color:rgba(255,255,255,0.7); text-decoration:none;">Shipping and Returns</a>
+              <a href="#" style="color:#FFFFFF; font-size:16px; font-family:'Jost',system-ui,-apple-system,sans-serif; font-weight:600; white-space:nowrap;" style-hover="color:rgba(255,255,255,0.7); text-decoration:none;">Frequently Asked Questions</a>
+            </div>
+            <div style="display:flex; flex-direction:column; gap:8px; padding-top:71px;">
+              <a href="#" style="color:#FFFFFF; font-size:16px; font-family:'Jost',system-ui,-apple-system,sans-serif; font-weight:600; white-space:nowrap;" style-hover="color:rgba(255,255,255,0.7); text-decoration:none;">Adoptable Books and Resources</a>
+              <a href="#" style="color:#FFFFFF; font-size:16px; font-family:'Jost',system-ui,-apple-system,sans-serif; font-weight:600; white-space:nowrap;" style-hover="color:rgba(255,255,255,0.7); text-decoration:none;">Alliances and Partnerships</a>
+              <a href="#" style="color:#FFFFFF; font-size:16px; font-family:'Jost',system-ui,-apple-system,sans-serif; font-weight:600; white-space:nowrap;" style-hover="color:rgba(255,255,255,0.7); text-decoration:none;">Advertisers</a>
+            </div>
+          </div>
+        </div>
+    </div>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  booksRef = React.createRef();
+  coursesRef = React.createRef();
+  jewelryRef = React.createRef();
+  state = { awardSlide: 0, carousel: { books: { left: false, right: true }, courses: { left: false, right: true }, jewelry: { left: false, right: true } }, openNavMenu: null };
+
+  componentDidMount() {
+    this.setupCarousel('books', this.booksRef);
+    this.setupCarousel('courses', this.coursesRef);
+    this.setupCarousel('jewelry', this.jewelryRef);
+  }
+
+  setupCarousel(key, ref) {
+    const el = ref.current;
+    if (!el) return;
+    const update = () => {
+      const { scrollLeft, scrollWidth, clientWidth } = el;
+      this.setState(s => ({ carousel: { ...s.carousel, [key]: { left: scrollLeft > 2, right: scrollLeft < scrollWidth - clientWidth - 2 } } }));
+    };
+    el.addEventListener('scroll', update, { passive: true });
+    window.addEventListener('resize', update);
+    update();
+  }
+
+  
+  openNavMenuItem(label) {
+    if (this.navMenuTimer) clearTimeout(this.navMenuTimer);
+    this.setState({ openNavMenu: label });
+  }
+  closeNavMenuItem() {
+    if (this.navMenuTimer) clearTimeout(this.navMenuTimer);
+    this.navMenuTimer = setTimeout(() => this.setState({ openNavMenu: null }), 250);
+  }
+
+  renderVals() {
+    const navy = '#1C1656', purple = '#5E50A1', sky = '#00B9DD';
+
+    const navItems = [
+      { label: 'Sale', href: 'Sigma Marketplace Sale.dc.html' },
+      { label: 'NCPD', href: 'Sigma Marketplace NCPD.dc.html' },
+      { label: 'Books', href: 'Sigma Marketplace Books.dc.html' },
+      { label: 'Jewelry', href: 'Sigma Marketplace Jewelry.dc.html' },
+      { label: 'Adoptable Resources', href: 'Sigma Marketplace Adoptable Resources.dc.html' },
+      { label: 'SigmaNursing.org', href: 'https://www.sigmanursing.org/' },
+    ].map(n => ({
+      ...n, style: `color:${navy}; font-family:'Jost',system-ui,-apple-system,sans-serif; font-weight:500; font-size:18px; line-height:19.8px; padding:8px 0; border-bottom:5px solid transparent;`,
+      hoverStyle: `color:${purple}; border-bottom:5px solid ${sky}; text-decoration:none;`,
+      hasMenu: n.label === 'Sale', noMenu: n.label !== 'Sale',
+    }));
+
+    const subCategoryData = {
+      NCPD: { page: 'Sigma Marketplace NCPD.dc.html', subs: ["Lifestyle, Society, & Culture","Education Resources","Technology Insights & Answers","Research Guides & Tools","Leadership Support & Training"] },
+      Books: { page: 'Sigma Marketplace Books.dc.html', subs: ["Leadership Support & Training","Career Advice","Education Resources","Clinical Information"] },
+      Jewelry: { page: 'Sigma Marketplace Jewelry.dc.html', subs: ["Necklaces","Pins","Charms"] },
+      'Adoptable Resources': { page: 'Sigma Marketplace Adoptable Resources.dc.html', subs: ["Clinical","Academia"] },
+    };
+    const navItemsWithMenu2 = navItems.map(n => {
+      const menuData = subCategoryData[n.label];
+      return {
+        ...n,
+        hasMenu: !!menuData, noMenu: !menuData,
+        menuOpen: this.state.openNavMenu === n.label,
+        style: this.state.openNavMenu === n.label ? n.style.replace('5px solid transparent', '5px solid #00B9DD') : n.style,
+        onOpen: () => this.openNavMenuItem(n.label),
+        onClose: () => this.closeNavMenuItem(),
+        subLinks: menuData ? menuData.subs.map(s => ({ label: s, href: `${menuData.page}?sub=${encodeURIComponent(s)}` })) : [],
+      };
+    });
+
+    const allBooks = [
+      { title: 'Evidence-Informed Health Policy, Revised Second Edition', image: 'https://publicmarketplaceimages.blob.core.windows.net/content/0002193_evidence-informed-health-policy-revised-second-edition.jpeg', price: '$54.95' },
+      { title: 'High Reliability Organizations, Third Edition', image: 'https://publicmarketplaceimages.blob.core.windows.net/content/0002211_high-reliability-organizations-third-edition.jpeg', price: '$74.95' },
+      { title: "The Nurse Manager's Guide to Budgeting & Finance, Fourth Edition", image: "https://publicmarketplaceimages.blob.core.windows.net/content/0002252_the-nurse-manager's-guide-to-budgeting-&-finance-fourth-edition.jpeg", price: '$39.95' },
+      { title: 'Leading Academic-Practice Partnerships in Nursing and Healthcare', image: 'https://publicmarketplaceimages.blob.core.windows.net/content/0002231_leading-academic-practice-partnerships-in-nursing-and-healthcare.jpeg', price: '$59.95' },
+      { title: 'Anatomy of Writing for Publication for Nurses, Fifth Edition', image: 'https://publicmarketplaceimages.blob.core.windows.net/content/0002163_anatomy-of-writing-for-publication-for-nurses-fifth-edition.jpeg', price: '$69.95' },
+      { title: 'Illuminating Florence', image: 'https://publicmarketplaceimages.blob.core.windows.net/content/0000089_illuminating-florence.jpeg', price: '$19.95' },
+      { title: "A Nurse's Step-By-Step Guide to Transitioning to the Professional Nurse Role", image: "https://publicmarketplaceimages.blob.core.windows.net/content/0000145_a-nurse's-step-by-step-guide-to-transitioning-to-the-professional-nurse-role.jpeg", price: '$39.95' },
+      { title: 'Self-Care for New and Student Nurses', image: 'https://publicmarketplaceimages.blob.core.windows.net/content/0001983_self-care-for-new-and-student-nurses.jpeg', price: '$59.95' },
+    ];
+    const bestSellers = allBooks.slice(0, 3);
+    const nursingBooks = allBooks.slice(0, 6);
+
+    const courses = [
+      { title: 'The Well-Being Effect: When Interprofessional Teams Work as One - Online Course', image: 'https://publicmarketplaceimages.blob.core.windows.net/content/0002226_the-well-being-effect-when-interprofessional-teams-work-as-one---online-course.png' },
+      { title: 'Not for Sale: Combating Human Trafficking in Global Nurse Recruitment - Online Course', image: 'https://publicmarketplaceimages.blob.core.windows.net/content/0002225_not-for-sale-combating-human-trafficking-in-global-nurse-recruitment---online-course.png' },
+      { title: 'Technology and Innovation in Healthcare - Online Course', image: 'https://publicmarketplaceimages.blob.core.windows.net/content/0002219_technology-and-innovation-in-healthcare---online-course.png' },
+      { title: 'August Advantage: Save Hours on Course Prep with AI Before Students Arrive - Online Course', image: 'https://publicmarketplaceimages.blob.core.windows.net/content/0002210_august-advantage-save-hours-on-course-prep-with-ai-before-students-arrive---online-course.png' },
+      { title: 'Mentorship: Cultivating Nursing Excellence - Online Course', image: 'https://publicmarketplaceimages.blob.core.windows.net/content/0002202_mentorship-cultivating-nursing-excellence---online-course.png' },
+      { title: 'How to Advance from Shared to Professional Governance - Online Course', image: 'https://publicmarketplaceimages.blob.core.windows.net/content/0002199_how-to-advance-from-shared-to-professional-governance-online-course.png' },
+    ];
+
+    const jewelry = [
+      { title: 'Honor Cord', image: 'https://publicmarketplaceimages.blob.core.windows.net/content/0000005_honor-cord.jpeg', price: '$22.00' },
+      { title: 'Stole', image: 'https://publicmarketplaceimages.blob.core.windows.net/content/0000474_stole.png', price: '$39.00' },
+      { title: 'Plain Key Pin - Sterling Silver', image: 'https://publicmarketplaceimages.blob.core.windows.net/content/0000434_plain-key-pin---sterling-silver-.jpeg', price: '$62.00' },
+      { title: 'Graduation Tassel Charm - Gold-Plated', image: 'https://publicmarketplaceimages.blob.core.windows.net/content/0001957_graduation-tassel-charm---gold-plated.jpeg', price: '$17.95' },
+      { title: 'Laurel Leaf Pendant in Gold-Plated with 24" Gold-Filled Chain', image: 'https://publicmarketplaceimages.blob.core.windows.net/content/0002081_laurel-leaf-pendant-in-gold-plated-with-24-gold-filled-chain.jpeg', price: '$129.00' },
+      { title: 'Laurel Leaf Pendant in Sterling Silver', image: 'https://publicmarketplaceimages.blob.core.windows.net/content/0002082_laurel-leaf-pendant-in-sterling-silver.jpeg', price: '$99.00' },
+    ];
+
+    const arrowStyleBase = `width:44px; height:44px; border-radius:50%; display:flex; align-items:center; justify-content:center; padding:0; box-shadow:0 10px 30px rgba(28,22,86,0.10); cursor:pointer; transition:opacity 0.2s;`;
+    const arrowStyleLight = `${arrowStyleBase} border:1.5px solid ${navy}; background:#FFFFFF; color:${navy};`;
+    const arrowStyleDark = `${arrowStyleBase} border:none; background:${purple}; color:#FFFFFF;`;
+    const disabledStyle = (base, disabled) => disabled ? `${base} opacity:0.35; cursor:not-allowed;` : base;
+    const scrollBy = (ref, dir) => () => ref.current && ref.current.scrollBy({ left: dir * 420, behavior: 'smooth' });
+
+    const awardSlides = [
+      { eyebrow: 'Eyebrow Text', title: 'Celebrating Excellence in Nursing Publishing', body: "This standout Sigma Publication earned Third Place in the American Journal of Nursing's 2025 Book of the Year awards.", imagePlaceholder: 'Award-winning book cover', image: 'book-cover-front.png' },
+      { eyebrow: 'New Release', title: 'Evidence-Informed Health Policy, Revised', body: 'A practical guide for nurses navigating the first steps of health policymaking, now in its second edition.', imagePlaceholder: 'New release book cover', image: 'book-cover-back.png' },
+      { eyebrow: 'Member Spotlight', title: 'Grow and Thrive as a Sigma Nurse', body: 'Membership connects you to research, mentorship, and a global community of nursing leaders.', imagePlaceholder: 'Sigma nurse photography', image: 'nurse-hero.webp' },
+    ];
+    const awardSlide = awardSlides[this.state.awardSlide % awardSlides.length];
+
+    return {
+      navItems: navItemsWithMenu2,
+      bestSellers: bestSellers.map(b => ({ ...b, link: `Sigma Marketplace PDP.dc.html?p=${encodeURIComponent(b.title)}` })),
+      nursingBooks: nursingBooks.map(b => ({ ...b, link: `Sigma Marketplace PDP.dc.html?p=${encodeURIComponent(b.title)}` })),
+      courses: courses.map(c => ({ ...c, link: `Sigma Marketplace PDP NCPD.dc.html?p=${encodeURIComponent(c.title)}` })),
+      jewelry: jewelry.map(j => ({ ...j, link: `Sigma Marketplace PDP Jewelry.dc.html?p=${encodeURIComponent(j.title)}` })),
+      arrowStyleLight, arrowStyleDark,
+      arrowStyleBooksLeft: disabledStyle(arrowStyleLight, !this.state.carousel.books.left),
+      arrowStyleBooksRight: disabledStyle(arrowStyleDark, !this.state.carousel.books.right),
+      arrowStyleCoursesLeft: disabledStyle(arrowStyleLight, !this.state.carousel.courses.left),
+      arrowStyleCoursesRight: disabledStyle(arrowStyleDark, !this.state.carousel.courses.right),
+      arrowStyleJewelryLeft: disabledStyle(arrowStyleLight, !this.state.carousel.jewelry.left),
+      arrowStyleJewelryRight: disabledStyle(arrowStyleDark, !this.state.carousel.jewelry.right),
+      awardEyebrow: awardSlide.eyebrow,
+      awardTitle: awardSlide.title,
+      awardBody: awardSlide.body,
+      awardImageId: `award-cover-${this.state.awardSlide}`,
+      awardImagePlaceholder: awardSlide.imagePlaceholder,
+      awardSlideImage: awardSlide.image,
+      prevAward: () => this.setState(s => ({ awardSlide: (s.awardSlide - 1 + awardSlides.length) % awardSlides.length })),
+      nextAward: () => this.setState(s => ({ awardSlide: (s.awardSlide + 1) % awardSlides.length })),
+      arrowStyleAwardPrev: disabledStyle(arrowStyleLight, this.state.awardSlide === 0),
+      arrowStyleAwardNext: disabledStyle(arrowStyleDark, this.state.awardSlide === awardSlides.length - 1),
+      booksRef: this.booksRef,
+      coursesRef: this.coursesRef,
+      scrollBooksLeft: scrollBy(this.booksRef, -1),
+      scrollBooksRight: scrollBy(this.booksRef, 1),
+      scrollCoursesLeft: scrollBy(this.coursesRef, -1),
+      scrollCoursesRight: scrollBy(this.coursesRef, 1),
+      jewelryRef: this.jewelryRef,
+      scrollJewelryLeft: scrollBy(this.jewelryRef, -1),
+      scrollJewelryRight: scrollBy(this.jewelryRef, 1),
+    };
+  }
+}
+</script>
+</body>
+</html>

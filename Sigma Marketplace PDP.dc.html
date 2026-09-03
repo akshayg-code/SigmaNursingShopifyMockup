@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bitter:ital,wght@0,400;0,600;0,700;1,400&amp;family=Jost:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet">
+<script src="./image-slot.js"></script>
+<style>
+  @font-face { font-family:'Avenir Next LT Pro'; src:url('fonts/AvenirNextLTPro-Regular.otf') format('opentype'); font-weight:400; font-style:normal; font-display:swap; }
+  @font-face { font-family:'Avenir Next LT Pro'; src:url('fonts/AvenirNextLTPro-It.otf') format('opentype'); font-weight:400; font-style:italic; font-display:swap; }
+  @font-face { font-family:'Avenir Next LT Pro'; src:url('fonts/AvenirNextLTPro-Regular.otf') format('opentype'); font-weight:500; font-style:normal; font-display:swap; }
+  @font-face { font-family:'Avenir Next LT Pro'; src:url('fonts/AvenirNextLTPro-Demi.otf') format('opentype'); font-weight:600; font-style:normal; font-display:swap; }
+  @font-face { font-family:'Avenir Next LT Pro'; src:url('fonts/AvenirNextLTPro-It.otf') format('opentype'); font-weight:500; font-style:italic; font-display:swap; }
+  @font-face { font-family:'Avenir Next LT Pro'; src:url('fonts/AvenirNextLTPro-MediumIt.otf') format('opentype'); font-weight:600; font-style:italic; font-display:swap; }
+  @font-face { font-family:'Avenir Next LT Pro'; src:url('fonts/AvenirNextLTPro-Bold.otf') format('opentype'); font-weight:700; font-style:normal; font-display:swap; }
+  @font-face { font-family:'Avenir Next LT Pro'; src:url('fonts/AvenirNextLTPro-Heavy.otf') format('opentype'); font-weight:800 900; font-style:normal; font-display:swap; }
+  @font-face { font-family:'Avenir Next LT Pro'; src:url('fonts/AvenirNextLTPro-HeavyIt.otf') format('opentype'); font-weight:800 900; font-style:italic; font-display:swap; }
+  html { scroll-behavior:smooth; color-scheme:light; }
+  body { margin:0; background:#FFFFFF; }
+  a { color:#1593D7; text-decoration:none; }
+  a:hover { color:#8A278C; }
+  * { box-sizing:border-box; }
+  @media (max-width: 1024px) {
+    .sm-grid-4 { grid-template-columns: repeat(2,1fr) !important; }
+    .sm-deal-row { flex-wrap: wrap !important; justify-content: center !important; }
+  }
+  @media (max-width: 768px) {
+    .sm-pdp-main { grid-template-columns: 1fr !important; }
+    .sm-header-row { flex-wrap:wrap; gap:16px !important; }
+    .sm-nav { flex-wrap:wrap; }
+    .sm-util-row { justify-content:center !important; flex-wrap:wrap; gap:14px !important; }
+    .sm-deal-row { flex-wrap:wrap; justify-content:center !important; }
+    .sm-search-box { width:100% !important; }
+  }
+  @media (max-width: 480px) { .sm-grid-4 { grid-template-columns: 1fr !important; } .sm-footer-grid { grid-template-columns: 1fr !important; } }
+  .sm-scroll-hide { scrollbar-width:none; -ms-overflow-style:none; }
+  .sm-scroll-hide::-webkit-scrollbar { display:none; }
+</style>
+</helmet>
+
+<div id="top" style="font-family:'Jost',system-ui,-apple-system,sans-serif; color: #1C1656; overflow-x: hidden; background-color: #FFFFFF">
+
+  <div style="background:#F6F6F8; color:#1C1656; font-size:14px; font-weight:500;">
+    <div class="sm-util-row" style="max-width:1600px; margin:0 auto; padding:10px 40px; display:flex; justify-content:flex-end; align-items:center; gap:16px; flex-wrap:wrap; border-bottom:1px solid rgba(28,22,86,0.06);">
+      <div style="display:flex; align-items:center; gap:24px; flex-wrap:wrap; font-size:14px; font-weight:500; line-height:20px; color:#1C1656;">
+        <a href="#top" style="color:#1C1656; font-weight:500;" style-hover="color:#5E50A1; text-decoration:none;">Register</a>
+        <a href="#top" style="color:#1C1656; font-weight:500; display:flex; align-items:center; gap:6px;" style-hover="color:#5E50A1; text-decoration:none;"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="8" r="4"></circle><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"></path></svg>Login</a>
+        <a href="#top" style="color:#1C1656; font-weight:500; display:flex; align-items:center; gap:6px;" style-hover="color:#5E50A1; text-decoration:none;"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 20s-7-4.4-9.5-8.8C.8 8 2 4.5 5.5 3.8 8 3.3 10 4.5 12 7c2-2.5 4-3.7 6.5-3.2C22 4.5 23.2 8 21.5 11.2 19 15.6 12 20 12 20z"></path></svg>Wishlist (0)</a>
+        <a href="#top" style="color:#1C1656; font-weight:500; display:flex; align-items:center; gap:6px;" style-hover="color:#5E50A1; text-decoration:none;"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="9" cy="20" r="1.4"></circle><circle cx="18" cy="20" r="1.4"></circle><path d="M2 3h2l2.4 12.2a2 2 0 002 1.8h8.6a2 2 0 002-1.6L21 8H6"></path></svg>Shopping Cart (0)</a>
+        <span style="width:1px; height:20px; background:rgba(28,22,86,0.3);"></span>
+        <a href="#top" style="background:#5E50A1; color:#FFFFFF; font-family:'Jost',system-ui,-apple-system,sans-serif; font-weight:500; font-size:14px; line-height:20px; padding:8px 16px; border-radius:999px;" style-hover="background:rgba(94,80,161,0.9); color:#FFFFFF;">Join Sigma</a>
+      </div>
+    </div>
+  </div>
+
+  <div style="background:#FFFFFF; box-shadow:0 1px 0 #DDE6EC; position:relative; z-index:2;">
+    <div class="sm-header-row" style="max-width:1600px; margin:0 auto; padding:20px 40px; display:flex; align-items:center; gap:36px; flex-wrap:wrap;">
+      <a href="Sigma Marketplace Homepage.dc.html"><img src="sigma-marketplace-logo.png" alt="Sigma Marketplace" width="150" height="92" style="display:block; height:91px; width:auto;"></a>
+      <nav class="sm-nav" style="display:flex; align-items:center; gap:24px; flex-wrap:wrap; margin-left:auto;">
+        <sc-for list="{{ navItems }}" as="item" hint-placeholder-count="6">
+          <sc-if value="{{ item.hasMenu }}" hint-placeholder-val="{{ false }}">
+            <div style="position:relative; display:flex; align-items:center; align-self:stretch;" onMouseEnter="{{ item.onOpen }}" onMouseLeave="{{ item.onClose }}">
+              <a href="{{ item.href }}" style="{{ item.style }}" style-hover="color:#5E50A1; border-bottom:5px solid #00B9DD; text-decoration:none;">{{ item.label }}</a>
+              <sc-if value="{{ item.menuOpen }}" hint-placeholder-val="{{ false }}">
+                <div style="position:absolute; top:calc(100% + 1px); left:0; background:#1C1656; border-radius:10px; box-shadow:0 24px 48px -8px rgba(0,0,0,0.45), 0 8px 20px -8px rgba(0,0,0,0.35); padding:32px; display:flex; flex-direction:column; gap:16px; z-index:20; min-width:260px;">
+                  <sc-for list="{{ item.subLinks }}" as="cat" hint-placeholder-count="4">
+                    <a href="{{ cat.href }}" style="font-family:'Jost',system-ui,-apple-system,sans-serif; font-size:15px; font-weight:700; color:#FFFFFF; white-space:nowrap;" style-hover="color:#00B9DD; text-decoration:none;">{{ cat.label }}</a>
+                  </sc-for>
+                </div>
+              </sc-if>
+            </div>
+          </sc-if>
+          <sc-if value="{{ item.noMenu }}" hint-placeholder-val="{{ true }}">
+            <a href="{{ item.href }}" style="{{ item.style }}" style-hover="color:#5E50A1; border-bottom:5px solid #00B9DD; text-decoration:none;">{{ item.label }}</a>
+          </sc-if>
+        </sc-for>
+      </nav>
+      <div class="sm-search-box" style="display:flex; align-items:center; background:#EFF7FA; border-radius:999px; padding:9px 16px; gap:8px; width:220px;">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#5E50A1" stroke-width="1.8"><circle cx="10.5" cy="10.5" r="6.5"></circle><path d="M20 20l-4.3-4.3"></path></svg>
+        <input placeholder="Search" style="border:none; background:transparent; outline:none; font-family:'Jost',system-ui,-apple-system,sans-serif; font-size:15px; color:#1C1440; width:100%;">
+      </div>
+    </div>
+  </div>
+
+  <div style="max-width:1600px; margin:0 auto; padding:24px 40px 0; font-family:'Bitter','Bitter Fallback',Georgia,serif; font-size:15px; color:#5A5384;">
+    <a href="Sigma Marketplace Homepage.dc.html" style="color:#5A5384;" style-hover="color:#5E50A1;">Home</a> &nbsp;/&nbsp; <a href="{{ categoryHref }}" style="color:#5A5384;" style-hover="color:#5E50A1;">{{ categoryLabel }}</a> &nbsp;/&nbsp; <span style="color:#1C1656;">{{ productTitle }}</span>
+  </div>
+
+  <div class="sm-pdp-main" style="max-width:1600px; margin:0 auto; padding:24px 40px 0; display:grid; grid-template-columns:2fr 1fr; gap:56px; align-items:start;">
+    <div style="min-width:0;">
+      <div style="position:relative; height:480px; background:#F5F6F8; border-radius:10px; padding:40px; overflow:hidden; margin-bottom:16px;">
+        <image-slot id="pdp-gallery-main" src="{{ activeImage }}" shape="rect" fit="contain" placeholder="Product image" style="width:100%; height:100%;"></image-slot>
+        <sc-if value="{{ hasMultipleImages }}" hint-placeholder-val="{{ false }}">
+          <button onClick="{{ prevImage }}" aria-label="Previous image" style="position:absolute; left:12px; top:50%; transform:translateY(-50%); width:44px; height:44px; border-radius:50%; border:1.5px solid #1C1656; background:#FFFFFF; box-shadow:0 10px 30px rgba(28,22,86,0.10); color:#1C1656; display:flex; align-items:center; justify-content:center; padding:0; cursor:pointer;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"></path></svg></button>
+          <button onClick="{{ nextImage }}" aria-label="Next image" style="position:absolute; right:12px; top:50%; transform:translateY(-50%); width:44px; height:44px; border-radius:50%; border:none; background:#5E50A1; box-shadow:0 10px 30px rgba(28,22,86,0.10); color:#FFFFFF; display:flex; align-items:center; justify-content:center; padding:0; cursor:pointer;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"></path></svg></button>
+          <div style="position:absolute; right:16px; bottom:16px; background:#FFFFFF; border-radius:999px; padding:4px 14px; font-family:'Jost',system-ui,-apple-system,sans-serif; font-size:13px; font-weight:600; color:#1C1656; box-shadow:0 4px 12px rgba(28,22,86,0.15);">{{ imageCounter }}</div>
+        </sc-if>
+      </div>
+      <sc-if value="{{ hasMultipleImages }}" hint-placeholder-val="{{ false }}">
+        <div style="display:flex; gap:12px;">
+          <sc-for list="{{ thumbnails }}" as="t" hint-placeholder-count="2">
+            <button onClick="{{ t.onSelect }}" style="{{ t.style }}"><image-slot id="pdp-thumb-{{ $index }}" src="{{ t.image }}" shape="rect" fit="contain" placeholder="Thumb" style="width:100%; height:100%;"></image-slot></button>
+          </sc-for>
+        </div>
+      </sc-if>
+    </div>
+    <div style="min-width:0;">
+      <div style="font-family:'Jost',system-ui,-apple-system,sans-serif; font-size:13px; font-weight:700; letter-spacing:0.16em; text-transform:uppercase; color:#5E50A1; margin-bottom:14px;">{{ eyebrowText }}</div>
+      <div style="font-family:'Jost',system-ui,-apple-system,sans-serif; font-size:34px; font-weight:800; letter-spacing:-0.02em; color:#1C1656; line-height:1.25; margin-bottom:14px; overflow-wrap:break-word;">{{ productTitle }}</div>
+      <div style="font-family:'Jost',system-ui,-apple-system,sans-serif; font-size:30px; font-weight:800; color:#1593D6; margin-bottom:20px;">{{ productPrice }}</div>
+      <div style="font-family:'Bitter','Bitter Fallback',Georgia,serif; font-size:18px; line-height:1.65; color:#1C1440; margin-bottom:32px;">{{ productSummary }}</div>
+
+      <div ref="{{ formatDropdownRef }}" style="position:relative; margin-bottom:20px; max-width:420px;">
+        <button type="button" onClick="{{ toggleFormatDropdown }}" style="width:100%; display:flex; align-items:center; justify-content:space-between; gap:12px; text-align:left; appearance:none; font-family:'Jost',system-ui,-apple-system,sans-serif; font-weight:700; font-size:16px; color:#1C1656; background:#FFFFFF; border:1.5px solid #B9C6D0; border-radius:16px; padding:16px 44px 16px 22px; cursor:pointer; overflow:hidden;">
+          <span style="overflow:hidden; text-overflow:ellipsis; white-space:nowrap;">{{ currentFormatLabel }} <span style="font-weight:500; color:#5A5384;">- SKU: {{ currentSku }}</span></span>
+          <span style="flex-shrink:0; color:#1593D6;">{{ currentFormatPrice }}</span>
+        </button>
+        <span style="position:absolute; right:20px; top:50%; transform:translateY(-50%) {{ dropdownArrowRotate }}; pointer-events:none; color:#5E50A1; transition:transform 0.15s;">▾</span>
+        <sc-if value="{{ formatDropdownOpen }}" hint-placeholder-val="{{ false }}">
+          <div style="position:absolute; top:calc(100% + 6px); left:0; width:100%; background:#FFFFFF; border:1.5px solid #DDE6EC; border-radius:16px; box-shadow:0 10px 30px rgba(28,22,86,0.15); overflow:hidden; z-index:5;">
+            <sc-for list="{{ formats }}" as="f" hint-placeholder-count="4">
+              <div onClick="{{ f.onSelect }}" style="{{ f.itemStyle }}" style-hover="background:#EFF7FA;">
+                <span>{{ f.label }} <span style="font-weight:500; color:#5A5384; font-size:13px;">- SKU: {{ f.sku }}</span></span>
+                <span style="font-weight:700; color:#1593D6;">{{ f.price }}</span>
+              </div>
+            </sc-for>
+          </div>
+        </sc-if>
+      </div>
+
+      <div style="display:flex; align-items:center; gap:16px;">
+        <div style="display:flex; align-items:center; border:1.5px solid #DDE6EC; border-radius:999px; overflow:hidden; background:#FFFFFF;">
+          <button onClick="{{ decrementQty }}" style="width:40px; height:48px; border:none; background:transparent; color:#1C1656; font-size:16px; font-weight:700; cursor:pointer;">−</button>
+          <div style="width:28px; text-align:center; font-family:'Jost',system-ui,-apple-system,sans-serif; font-weight:700; color:#1C1656; font-size:15px;">{{ qty }}</div>
+          <button onClick="{{ incrementQty }}" style="width:40px; height:48px; border:none; background:transparent; color:#1C1656; font-size:16px; font-weight:700; cursor:pointer;">+</button>
+        </div>
+        <button style="background:#5E50A1; color:#FFFFFF; font-family:'Jost',system-ui,-apple-system,sans-serif; font-weight:500; font-size:15px; border:none; border-radius:999px; padding:16px 32px; cursor:pointer;" style-hover="background:rgba(94,80,161,0.9); color:#FFFFFF;">Add to Cart</button>
+        <button aria-label="Add to wishlist" style="width:48px; height:48px; border-radius:50%; border:1.5px solid #DDE6EC; background:#FFFFFF; color:#5E50A1; display:flex; align-items:center; justify-content:center; cursor:pointer; flex:0 0 auto;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 20s-7-4.4-9.5-8.8C.8 8 2 4.5 5.5 3.8 8 3.3 10 4.5 12 7c2-2.5 4-3.7 6.5-3.2C22 4.5 23.2 8 21.5 11.2 19 15.6 12 20 12 20z"></path></svg></button>
+      </div>
+    </div>
+  </div>
+
+  <div style="max-width:1600px; margin:0 auto; padding:48px 40px 0; display:grid; grid-template-columns:2fr 1fr; gap:56px;">
+    <div>
+      <sc-for list="{{ accordionSections }}" as="sec" hint-placeholder-count="4">
+        <div style="background:#FFFFFF; border-radius:10px; box-shadow:0 10px 30px rgba(28,22,86,0.10); margin-bottom:16px; overflow:hidden;">
+          <div onClick="{{ sec.onToggle }}" style="cursor:pointer; display:flex; justify-content:space-between; align-items:center; padding:22px 24px; font-family:'Jost',system-ui,-apple-system,sans-serif; font-weight:700; font-size:19px; color:#1C1656;">
+            <span>{{ sec.title }}</span><span style="color:#5E50A1; transition:transform 0.2s; transform:{{ sec.chevronTransform }};">▾</span>
+          </div>
+          <sc-if value="{{ sec.open }}" hint-placeholder-val="{{ false }}">
+            <div style="padding:0 24px 24px; font-family:'Bitter','Bitter Fallback',Georgia,serif; font-size:17px; line-height:1.75; color:#1C1440;">{{ sec.body }}</div>
+          </sc-if>
+        </div>
+      </sc-for>
+    </div>
+    <div></div>
+  </div>
+
+  <div style="padding:56px 40px;">
+    <div style="max-width:1600px; margin:0 auto;">
+      <div style="font-family:'Jost',system-ui,-apple-system,sans-serif; font-size: 13px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: #5E50A1; margin-bottom: 12px">Best Sellers</div>
+      <div style="font-family:'Jost',system-ui,-apple-system,sans-serif; font-size: 40px; font-weight: 800; letter-spacing: -0.02em; color: #1C1656; margin-bottom: 32px">Related products</div>
+      <div style="position:relative;">
+        <div ref="{{ relatedRef }}" class="sm-scroll-hide" style="display:flex; gap:28px; overflow-x:auto; scroll-behavior:smooth; scroll-snap-type:x mandatory; padding:2px 2px 8px;">
+          <sc-for list="{{ relatedBooks }}" as="b" hint-placeholder-count="6">
+            <div style="flex: 0 0 calc((100% - 140px)/6); min-width:180px; scroll-snap-align:start; background:#FFFFFF; border-radius:10px; box-shadow:0 10px 30px rgba(28,22,86,0.10); overflow:hidden;">
+              <a href="{{ b.link }}" style="display:block; aspect-ratio:3/4; overflow:hidden; background:#EFF7FA;">
+                <image-slot id="related-{{ $index }}" src="{{ b.image }}" shape="rect" placeholder="{{ b.title }}" style="width:100%; height:100%; object-fit:cover;"></image-slot>
+              </a>
+              <div style="padding:16px;">
+                <div style="font-family:'Jost',system-ui,-apple-system,sans-serif; font-weight:700; font-size:15px; line-height:1.35; color:#1C1656; min-height:42px; display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden;">{{ b.title }}</div>
+                <div style="font-family:'Jost',system-ui,-apple-system,sans-serif; font-weight:800; font-size:16px; color:#1593D6; margin-top:8px;">{{ b.price }}</div>
+              </div>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+      <div style="display:flex; justify-content:flex-end; gap:10px; margin-top:20px;">
+        <button onClick="{{ scrollRelatedLeft }}" style="{{ arrowStyleRelatedLeft }}"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"></path></svg></button>
+        <button onClick="{{ scrollRelatedRight }}" style="{{ arrowStyleRelatedRight }}"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"></path></svg></button>
+      </div>
+    </div>
+  </div>
+
+  <div style="position:relative; height:120px; overflow:hidden;">
+    <svg preserveAspectRatio="none" viewBox="0 0 1684 102" style="position:absolute; inset:0; width:100%; height:100%; display:block;">
+      <path fill="#1C1656" d="M0 93V102H1684V0C1380.12 4.59259 621.479 29.6222 0 93Z"></path>
+      <path fill="none" stroke="#00B9DD" stroke-width="4" stroke-linecap="round" d="M2 64.8288C204.004 49.8762 752.782 3.85989 1682 18.8125"></path>
+      <path fill="none" stroke="#8A278C" stroke-width="4" stroke-linecap="round" d="M2 11.0352C311.74 11.826 1081.37 30.7262 1682 100.001"></path>
+    </svg>
+  </div>
+
+  <div style="background:#1C1656; color:#E4E9F6; position:relative; overflow:hidden;">
+    <div style="max-width:1600px; margin:0 auto; padding:70px 40px 20px; position:relative;">
+      <div class="sm-footer-grid" style="display:grid; grid-template-columns:1.2fr 1fr 1fr 1fr; gap:40px; padding-bottom:32px;">
+        <div style="height:100%; display:flex; flex-direction:column;">
+          <img src="sigma-marketplace-logo-footer.png" alt="Sigma Marketplace" width="150" height="92" style="display:block; width:232px; height:auto;">
+          <div style="font-family:'Jost',system-ui,-apple-system,sans-serif; font-weight:700; color:#FFFFFF; margin:22px 0 10px; font-size:15px;">Connect with Sigma Nursing</div>
+          <div style="display:flex; gap:8px; margin-top:auto;">
+            <a href="https://facebook.com/sigmanursing" aria-label="Facebook" style="width:40px; height:40px; border-radius:50%; display:flex; align-items:center; justify-content:center; background-color:#5E50A1;"><svg width="18" height="18" viewBox="0 0 24 24" fill="#FFFFFF"><path d="M13 22v-9h3l.5-4H13V6.5c0-1.1.3-1.9 1.9-1.9H17V1.1C16.6 1 15.4 1 14 1c-2.9 0-4.9 1.8-4.9 5v3H6v4h3.1v9z"></path></svg></a>
+            <a href="https://www.linkedin.com/company/sigma-theta-tau-international/" aria-label="LinkedIn" style="width:40px; height:40px; border-radius:50%; display:flex; align-items:center; justify-content:center; background-color:#5E50A1;"><svg width="18" height="18" viewBox="0 0 24 24" fill="#FFFFFF"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9h4v12H3zM9 9h3.8v1.7h.05c.53-1 1.83-1.7 3.15-1.7C19.2 9 20 11 20 13.9V21h-4v-6.3c0-1.5-.03-3.4-2.1-3.4-2.1 0-2.4 1.6-2.4 3.3V21H9z"></path></svg></a>
+            <a href="https://instagram.com/sigmanursing" aria-label="Instagram" style="width:40px; height:40px; border-radius:50%; display:flex; align-items:center; justify-content:center; background-color:#5E50A1;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"></rect><circle cx="12" cy="12" r="4"></circle><circle cx="17.5" cy="6.5" r="0.6" fill="#FFFFFF" stroke="none"></circle></svg></a>
+            <a href="https://www.youtube.com/@SigmaHeadquarters" aria-label="YouTube" style="width:40px; height:40px; border-radius:50%; display:flex; align-items:center; justify-content:center; background-color:#5E50A1;"><svg width="18" height="18" viewBox="0 0 24 24" fill="#FFFFFF"><path d="M23 12s0-3.6-.5-5.3a3 3 0 0 0-2.1-2.1C18.7 4 12 4 12 4s-6.7 0-8.4.6a3 3 0 0 0-2.1 2.1C1 8.4 1 12 1 12s0 3.6.5 5.3a3 3 0 0 0 2.1 2.1C5.3 20 12 20 12 20s6.7 0 8.4-.6a3 3 0 0 0 2.1-2.1C23 15.6 23 12 23 12z" fill="none" stroke="#FFFFFF" stroke-width="1.6"></path><path d="M10 9l6 3-6 3z" fill="#FFFFFF"></path></svg></a>
+            <a href="https://thecircle.sigmanursing.org/home" aria-label="The Circle" style="width:40px; height:40px; border-radius:50%; display:flex; align-items:center; justify-content:center; background-color:#5E50A1;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="1.8"><circle cx="12" cy="12" r="9"></circle><circle cx="12" cy="12" r="3.2" fill="#FFFFFF" stroke="none"></circle></svg></a>
+          </div>
+        </div>
+        <div style="grid-column:2 / span 3; height:100%;">
+          <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:40px; height:100%;">
+            <div style="display:flex; flex-direction:column; height:100%; padding-top:71px; position:relative;">
+              <div style="font-family:'Bitter','Bitter Fallback',Georgia,serif; font-size:15px; color:#E4E9F6; line-height:1.6; margin-bottom:16px;">550 W. North St., Suite 120<br>Indianapolis, IN 46202<br>United States</div>
+              <div style="font-family:'Bitter','Bitter Fallback',Georgia,serif; font-size:15px; color:#E4E9F6; line-height:1.6; margin-bottom:16px;"><a href="tel:+18886347575" style="color:#E4E9F6;" style-hover="color:rgba(255,255,255,0.7); text-decoration:none;">888.634.7575</a> (US/CA toll-free)<br><a href="tel:+13176348171" style="color:#E4E9F6;" style-hover="color:rgba(255,255,255,0.7); text-decoration:none;">+1.317.634.8171</a> (International)</div>
+              <div style="font-family:'Bitter','Bitter Fallback',Georgia,serif; font-size:15px; color:#E4E9F6; line-height:1.6; white-space:nowrap; margin-top:auto;">Monday–Friday | 8:00 a.m. – 5:00 p.m. ET</div>
+              <div style="position:absolute; left:calc(100% + 40px); bottom:0; display:flex; flex-direction:column; gap:6px; white-space:nowrap;">
+                <span style="white-space:nowrap;"><a href="#" style="color:#FFFFFF; font-size:14px;" style-hover="color:rgba(255,255,255,0.7); text-decoration:none;">Contact Us</a> &nbsp;|&nbsp; <a href="#" style="color:#FFFFFF; font-size:14px;" style-hover="color:rgba(255,255,255,0.7); text-decoration:none;">Privacy Policy</a> &nbsp;|&nbsp; <a href="#" style="color:#FFFFFF; font-size:14px;" style-hover="color:rgba(255,255,255,0.7); text-decoration:none;">Terms of Service</a></span>
+                <span style="font-size:14px; color:#FFFFFF; white-space:nowrap;">© 2026 Sigma Theta Tau International Honor Society of Nursing. All rights reserved.</span>
+              </div>
+            </div>
+            <div style="display:flex; flex-direction:column; gap:8px; padding-top:71px;">
+              <a href="#" style="color:#FFFFFF; font-size:16px; font-family:'Jost',system-ui,-apple-system,sans-serif; font-weight:600; white-space:nowrap;" style-hover="color:rgba(255,255,255,0.7); text-decoration:none;">My Account</a>
+              <a href="#" style="color:#FFFFFF; font-size:16px; font-family:'Jost',system-ui,-apple-system,sans-serif; font-weight:600; white-space:nowrap;" style-hover="color:rgba(255,255,255,0.7); text-decoration:none;">Shipping and Returns</a>
+              <a href="#" style="color:#FFFFFF; font-size:16px; font-family:'Jost',system-ui,-apple-system,sans-serif; font-weight:600; white-space:nowrap;" style-hover="color:rgba(255,255,255,0.7); text-decoration:none;">Frequently Asked Questions</a>
+            </div>
+            <div style="display:flex; flex-direction:column; gap:8px; padding-top:71px;">
+              <a href="#" style="color:#FFFFFF; font-size:16px; font-family:'Jost',system-ui,-apple-system,sans-serif; font-weight:600; white-space:nowrap;" style-hover="color:rgba(255,255,255,0.7); text-decoration:none;">Adoptable Books and Resources</a>
+              <a href="#" style="color:#FFFFFF; font-size:16px; font-family:'Jost',system-ui,-apple-system,sans-serif; font-weight:600; white-space:nowrap;" style-hover="color:rgba(255,255,255,0.7); text-decoration:none;">Alliances and Partnerships</a>
+              <a href="#" style="color:#FFFFFF; font-size:16px; font-family:'Jost',system-ui,-apple-system,sans-serif; font-weight:600; white-space:nowrap;" style-hover="color:rgba(255,255,255,0.7); text-decoration:none;">Advertisers</a>
+            </div>
+          </div>
+        </div>
+    </div>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { format: 'Physical', qty: 1, openAccordion: 'description', carousel: { left: false, right: true }, formatDropdownOpen: false, activeImageIndex: 0, openNavMenu: null };
+  relatedRef = React.createRef();
+  formatDropdownRef = React.createRef();
+
+  componentDidMount() {
+    const el = this.relatedRef.current;
+    if (el) {
+      const update = () => {
+        const { scrollLeft, scrollWidth, clientWidth } = el;
+        this.setState({ carousel: { left: scrollLeft > 2, right: scrollLeft < scrollWidth - clientWidth - 2 } });
+      };
+      el.addEventListener('scroll', update, { passive: true });
+      window.addEventListener('resize', update);
+      update();
+    }
+    this.onDocClick = (e) => {
+      if (this.formatDropdownRef.current && !this.formatDropdownRef.current.contains(e.target)) {
+        this.setState({ formatDropdownOpen: false });
+      }
+    };
+    document.addEventListener('mousedown', this.onDocClick);
+  }
+
+  componentWillUnmount() {
+    document.removeEventListener('mousedown', this.onDocClick);
+  }
+
+  
+  openNavMenuItem(label) {
+    if (this.navMenuTimer) clearTimeout(this.navMenuTimer);
+    this.setState({ openNavMenu: label });
+  }
+  closeNavMenuItem() {
+    if (this.navMenuTimer) clearTimeout(this.navMenuTimer);
+    this.navMenuTimer = setTimeout(() => this.setState({ openNavMenu: null }), 250);
+  }
+
+  renderVals() {
+    const navy = '#1C1656', white = '#FFFFFF', violet = '#5E50A1', sky = '#00B9DD', blue = '#1593D7';
+    const pillBase = `display:inline-block; font-family:'Jost',system-ui,-apple-system,sans-serif; font-weight:800; text-transform:uppercase; letter-spacing:0.01em; border-radius:999px; text-align:center;`;
+    const ctaButtonStyle = `${pillBase} background:${blue}; color:${white}; font-size:16px; padding:16px 32px;`;
+    const ctaButtonHoverStyle = `background:#127DB3; color:${white}; text-decoration:none;`;
+    const heroCardCtaStyle = `${pillBase} background:${blue}; color:${white}; font-size:15px; padding:13px 26px;`;
+    const smallCtaStyle = `${pillBase} background:${violet}; color:${white}; font-size:13px; padding:11px 18px;`;
+
+    const navItems = [
+      { label: 'Sale', href: 'Sigma Marketplace Sale.dc.html' },
+      { label: 'NCPD', href: 'Sigma Marketplace NCPD.dc.html' },
+      { label: 'Books', href: 'Sigma Marketplace Books.dc.html' },
+      { label: 'Jewelry', href: 'Sigma Marketplace Jewelry.dc.html' },
+      { label: 'Adoptable Resources', href: 'Sigma Marketplace Adoptable Resources.dc.html' },
+      { label: 'SigmaNursing.org', href: 'https://www.sigmanursing.org/' },
+    ].map(n => ({
+      ...n, style: `color:${navy}; font-family:'Jost',system-ui,-apple-system,sans-serif; font-weight:500; font-size:1.125rem; padding-bottom:4px; border-bottom:5px solid transparent;`,
+      hoverStyle: `color:${violet}; border-bottom:5px solid ${sky}; text-decoration:none;`,
+      hasMenu: n.label === 'Sale', noMenu: n.label !== 'Sale',
+    }));
+
+    const subCategoryData = {
+      NCPD: { page: 'Sigma Marketplace NCPD.dc.html', subs: ["Lifestyle, Society, & Culture","Education Resources","Technology Insights & Answers","Research Guides & Tools","Leadership Support & Training"] },
+      Books: { page: 'Sigma Marketplace Books.dc.html', subs: ["Leadership Support & Training","Career Advice","Education Resources","Clinical Information"] },
+      Jewelry: { page: 'Sigma Marketplace Jewelry.dc.html', subs: ["Necklaces","Pins","Charms"] },
+      'Adoptable Resources': { page: 'Sigma Marketplace Adoptable Resources.dc.html', subs: ["Clinical","Academia"] },
+    };
+    const navItemsWithMenu2 = navItems.map(n => {
+      const menuData = subCategoryData[n.label];
+      return {
+        ...n,
+        hasMenu: !!menuData, noMenu: !menuData,
+        menuOpen: this.state.openNavMenu === n.label,
+        style: this.state.openNavMenu === n.label ? n.style.replace('5px solid transparent', '5px solid #00B9DD') : n.style,
+        onOpen: () => this.openNavMenuItem(n.label),
+        onClose: () => this.closeNavMenuItem(),
+        subLinks: menuData ? menuData.subs.map(s => ({ label: s, href: `${menuData.page}?sub=${encodeURIComponent(s)}` })) : [],
+      };
+    });
+
+    const catalog = [
+      { title: 'Evidence-Informed Health Policy, Revised Second Edition', price: 54.95, image: 'https://publicmarketplaceimages.blob.core.windows.net/content/0002193_evidence-informed-health-policy-revised-second-edition.jpeg', images: ['https://publicmarketplaceimages.blob.core.windows.net/content/0002193_evidence-informed-health-policy-revised-second-edition.jpeg', 'https://publicmarketplaceimages.blob.core.windows.net/content/0002194_evidence-informed-health-policy-revised-second-edition.jpeg'], category: 'Books', description: 'Evidence-Informed Health Policy demystifies health policymaking and equips nurses and other healthcare professionals with the knowledge, tools, and confidence to navigate the first of many steps into health policy.', multiFormat: true },
+      { title: "The Nurse Manager's Guide to Budgeting & Finance, Fourth Edition", price: 39.95, image: "https://publicmarketplaceimages.blob.core.windows.net/content/0002252_the-nurse-manager's-guide-to-budgeting-&-finance-fourth-edition.jpeg", category: 'Books', description: 'A practical guide to budgeting and financial management for nurse managers.' },
+      { title: "A Nurse's Step-By-Step Guide to Writing a Dissertation or Scholarly Project, Fourth Edition", price: 39.95, image: "https://publicmarketplaceimages.blob.core.windows.net/content/0002250_a-nurse's-step-by-step-guide-to-writing-a-dissertation-or-scholarly-project-fourth-edition.jpeg", category: 'Books', description: 'A step-by-step guide to planning, documenting, and writing a dissertation or scholarly project.' },
+      { title: 'Leading Academic-Practice Partnerships in Nursing and Healthcare', price: 59.95, image: 'https://publicmarketplaceimages.blob.core.windows.net/content/0002231_leading-academic-practice-partnerships-in-nursing-and-healthcare.jpeg', category: 'Books', description: 'Strategies for building and leading successful academic-practice partnerships in nursing and healthcare.' },
+      { title: 'Taking Action: Top 10 Priorities for Nurses to Protect Health in a Changing Climate', price: 39.95, image: 'https://publicmarketplaceimages.blob.core.windows.net/content/0002227_taking-action-top-10-priorities-for-nurses-to-protect-health-in-a-changing-climate.jpeg', category: 'Books', description: 'Top priorities nurses can act on to protect health amid a changing climate.' },
+      { title: 'High Reliability Organizations, Third Edition', price: 74.95, image: 'https://publicmarketplaceimages.blob.core.windows.net/content/0002211_high-reliability-organizations-third-edition.jpeg', images: ['https://publicmarketplaceimages.blob.core.windows.net/content/0002211_high-reliability-organizations-third-edition.jpeg', 'https://publicmarketplaceimages.blob.core.windows.net/content/0002212_high-reliability-organizations-third-edition.jpeg'], category: 'Books', description: 'A healthcare handbook for patient safety and quality through high reliability practices.' },
+      { title: 'Facilitator Guide for High Reliability Organizations, Third Edition', price: 39.95, image: 'https://publicmarketplaceimages.blob.core.windows.net/content/0002213_facilitator-guide-for-high-reliability-organizations-third-edition.jpeg', category: 'Books', description: 'Facilitator guide supporting classroom use of High Reliability Organizations, Third Edition.' },
+      { title: 'Workbook for High Reliability Organizations, Third Edition', price: 39.95, image: 'https://publicmarketplaceimages.blob.core.windows.net/content/0002215_workbook-for-high-reliability-organizations-third-edition.jpeg', category: 'Books', description: 'Companion workbook for High Reliability Organizations, Third Edition.' },
+      { title: 'Practice & Leadership in Nursing Homes', price: 49.95, image: 'https://publicmarketplaceimages.blob.core.windows.net/content/0002055_practice-&-leadership-in-nursing-homes.jpeg', category: 'Books', description: 'Guidance on practice and leadership challenges specific to nursing home settings.' },
+      { title: 'Coaching Guide for Practice and Leadership in Nursing Homes', price: 36.95, image: 'https://publicmarketplaceimages.blob.core.windows.net/content/0002207_coaching-guide-for-practice-and-leadership-in-nursing-homes.jpeg', category: 'Books', description: 'A coaching guide to accompany Practice & Leadership in Nursing Homes.' },
+      { title: "A Nurse's Step-By-Step Guide to Publishing a Dissertation or DNP Project", price: 39.95, image: "https://publicmarketplaceimages.blob.core.windows.net/content/0000689_a-nurse's-step-by-step-guide-to-publishing-a-dissertation-or-dnp-project.jpeg", images: ["https://publicmarketplaceimages.blob.core.windows.net/content/0000689_a-nurse's-step-by-step-guide-to-publishing-a-dissertation-or-dnp-project.jpeg", "https://publicmarketplaceimages.blob.core.windows.net/content/0000691_a-nurse's-step-by-step-guide-to-publishing-a-dissertation-or-dnp-project.jpeg"], category: 'Sale', description: 'A concise guide to preparing and polishing a dissertation or DNP project for publication.' },
+      { title: "A Nurse's Step-By-Step Guide to Transitioning to the Professional Nurse Role", price: 39.95, image: "https://publicmarketplaceimages.blob.core.windows.net/content/0000145_a-nurse's-step-by-step-guide-to-transitioning-to-the-professional-nurse-role.jpeg", category: 'Sale', description: 'A straightforward how-to guide for confidently entering professional nursing practice.' },
+      { title: 'Against Medical Advice', price: 34.95, image: 'https://publicmarketplaceimages.blob.core.windows.net/content/0001975_against-medical-advice.jpeg', category: 'Sale', description: 'Explores the medical, social, cultural, and religious factors behind treatment refusals.' },
+      { title: 'Anatomy of Writing for Publication for Nurses, Fourth Edition', price: 54.95, image: 'https://publicmarketplaceimages.blob.core.windows.net/content/0001591_anatomy-of-writing-for-publication-for-nurses-fourth-edition.jpeg', category: 'Sale', description: 'A fully updated guide to help nurses move from single sentences to a published manuscript.' },
+      { title: 'Building a Culture of Ownership in Healthcare, Third Edition', price: 49.95, image: 'https://publicmarketplaceimages.blob.core.windows.net/content/0002176_building-a-culture-of-ownership-in-healthcare-third-edition.jpeg', category: 'Sale', description: 'A proven model and strategies to move healthcare culture from accountability to ownership.' },
+      { title: 'Business Basics for Nurses', price: 34.95, image: 'https://publicmarketplaceimages.blob.core.windows.net/content/0000143_business-basics-for-nurses.jpeg', category: 'Sale', description: 'Essential business knowledge and skills tailored for nurses stepping into leadership and entrepreneurial roles.' },
+      { title: 'Cultural Sensibility in Healthcare', price: 34.95, image: 'https://publicmarketplaceimages.blob.core.windows.net/content/0000102_cultural-sensibility-in-healthcare.jpeg', category: 'Sale', description: 'A practical guide to building cultural sensibility across diverse patient populations in healthcare settings.' },
+      { title: 'Emergency Nursing: The Profession, the Pathway, the Practice', price: 59.95, image: 'https://publicmarketplaceimages.blob.core.windows.net/content/0000157_emergency-nursing-the-profession-the-pathway-the-practice.jpeg', category: 'Sale', description: 'A comprehensive look at emergency nursing as a profession, the career pathway, and practice essentials.' },
+      { title: 'Ethical Case Studies for Advanced Practice Nurses', price: 34.95, image: 'https://publicmarketplaceimages.blob.core.windows.net/content/0001911_ethical-case-studies-for-advanced-practice-nurses.jpeg', category: 'Sale', description: "Case studies to improve APRNs' agility resolving ethical quandaries across practice settings." },
+      { title: 'Etiquette & Communication Strategies for Nurses, Third Edition', price: 34.95, image: 'https://publicmarketplaceimages.blob.core.windows.net/content/0000702_etiquette-&-communication-strategies-for-nurses-third-edition.jpeg', category: 'Sale', description: 'Modern etiquette and communication strategies critical to professional nursing success.' },
+      { title: 'High Reliability Organizations, Second Edition', price: 64.95, image: 'https://publicmarketplaceimages.blob.core.windows.net/content/0001978_high-reliability-organizations-second-edition.jpeg', category: 'Sale', description: 'Tools to establish an error detection and prevention system in healthcare organizations.' },
+      { title: 'Improving Nurse Retention and Healthcare Outcomes', price: 39.95, image: 'https://publicmarketplaceimages.blob.core.windows.net/content/0001981_improving-nurse-retention-and-healthcare-outcomes.jpeg', category: 'Sale', description: 'Understand how nurse retention connects to healthcare outcomes and what clinical nurses can do.' },
+      { title: 'INSPIREd Healthcare', price: 59.95, image: 'https://publicmarketplaceimages.blob.core.windows.net/content/0000235_inspired-healthcare.jpeg', category: 'Sale', description: 'Follows a nurse-led team implementing an accountable community of health in pursuit of the Triple Aim.' },
+      { title: 'Johns Hopkins Evidence-Based Practice for Nurses and Healthcare Professionals, Fourth Edition', price: 59.95, image: 'https://publicmarketplaceimages.blob.core.windows.net/content/0001982_johns-hopkins-evidence-based-practice-for-nurses-and-healthcare-professionals-fourth-edition.jpeg', category: 'Adoptable Resources', description: 'A fully revised model refined through more than a decade of use and clinician feedback.' },
+      { title: 'Johns Hopkins Nursing Professional Practice Model', price: 49.95, image: 'https://publicmarketplaceimages.blob.core.windows.net/content/0000116_johns-hopkins-nursing-professional-practice-model.jpeg', category: 'Sale', description: 'An in-depth look at the Johns Hopkins Nursing Professional Practice Model and its application to nursing practice.' },
+      { title: 'Nursing Beyond the Bedside', price: 29.95, image: 'https://publicmarketplaceimages.blob.core.windows.net/content/0000171_nursing-beyond-the-bedside.jpeg', category: 'Sale', description: 'Explores nontraditional nursing career paths beyond direct bedside patient care.' },
+      { title: 'Nursing Leadership During Crisis', price: 44.95, image: 'https://publicmarketplaceimages.blob.core.windows.net/content/0002093_nursing-leadership-during-crisis.jpeg', category: 'Sale', description: 'Perspective from the front lines on leading effectively through crisis.' },
+      { title: 'Nursing-Led Savings', price: 39.95, image: 'https://publicmarketplaceimages.blob.core.windows.net/content/0000231_nursing-led-savings.jpeg', category: 'Sale', description: 'A sustainable plan to eliminate waste and streamline clinical work without cutting staffing.' },
+      { title: 'Rethinking Your Unit Council Structure', price: 44.95, image: 'https://publicmarketplaceimages.blob.core.windows.net/content/0000225_rethinking-your-unit-council-structure.jpeg', category: 'Sale', description: 'Practical strategies for redesigning shared governance and unit council structures.' },
+      { title: "The Career Handoff: A Healthcare Leader's Guide to Knowledge & Wisdom Transfer Across Generations", price: 39.95, image: "https://publicmarketplaceimages.blob.core.windows.net/content/0000159_the-career-handoff--a-healthcare-leader's-guide-to-knowledge-&-wisdom-transfer-across-generations.jpeg", category: 'Sale', description: 'Guidance for healthcare leaders on transferring institutional knowledge and wisdom across generations of staff.' },
+      { title: 'Facilitator Guide for Johns Hopkins Evidence-Based Practice for Nurses and Healthcare Professionals, Fourth Edition', price: 29.95, image: 'https://publicmarketplaceimages.blob.core.windows.net/content/0002116_facilitator-guide-for-johns-hopkins-evidence-based-practice-for-nurses-and-healthcare-professionals-.jpeg', category: 'Adoptable Resources', description: "This facilitator's guide supports university faculty and clinicians facilitating professional development." },
+      { title: 'Anatomy of Writing for Publication for Nurses, Fifth Edition', price: 69.95, image: 'https://publicmarketplaceimages.blob.core.windows.net/content/0002163_anatomy-of-writing-for-publication-for-nurses-fifth-edition.jpeg', category: 'Adoptable Resources', description: 'A practical and useful guide that removes the fear and confusion from writing and publishing.' },
+      { title: 'Facilitator Guide for Anatomy of Writing for Publication for Nurses, Fifth Edition', price: 29.95, image: 'https://publicmarketplaceimages.blob.core.windows.net/content/0002119_facilitator-guide-for-anatomy-of-writing-for-publication-for-nurses-fifth-edition.jpeg', category: 'Adoptable Resources', description: 'Chapter summaries and writing exercises to accompany Anatomy of Writing for Publication for Nurses, Fifth Edition.' },
+      { title: 'Student Workbook for Anatomy of Writing for Publication for Nurses, Fifth Edition', price: 29.95, image: 'https://publicmarketplaceimages.blob.core.windows.net/content/0002120_student-workbook-for-anatomy-of-writing-for-publication-for-nurses-fifth-edition.jpeg', category: 'Adoptable Resources', description: 'Practice opportunities to build writing skills from a single sentence to a published manuscript.' },
+      { title: 'Critical Conversations in Healthcare, Third Edition', price: 39.95, image: 'https://publicmarketplaceimages.blob.core.windows.net/content/0002121_critical-conversations-in-healthcare-third-edition.jpeg', category: 'Adoptable Resources', description: 'Scripts and scenarios to facilitate better, more effective communication in healthcare settings.' },
+      { title: "A Nurse's Step-by-Step Guide to Transitioning to an Academic Role", price: 39.95, image: "https://publicmarketplaceimages.blob.core.windows.net/content/0001976_a-nurse's-step-by-step-guide-to-transitioning-to-an-academic-role.jpeg", category: 'Adoptable Resources', description: 'A detailed road map for a successful transition into academia.' },
+      { title: "A Nurse's Step-By-Step Guide to Writing a Dissertation or Scholarly Project, Third Edition", price: 39.95, image: "https://publicmarketplaceimages.blob.core.windows.net/content/0001993_a-nurse's-step-by-step-guide-to-writing-a-dissertation-or-scholarly-project-third-edition.jpeg", category: 'Adoptable Resources', description: 'Practical steps and tools to plan, document, organize, and write a dissertation or scholarly project.' },
+      { title: 'Honor Cord', price: 22.00, image: 'https://publicmarketplaceimages.blob.core.windows.net/content/0000005_honor-cord.jpeg', category: 'Jewelry', description: 'The Sigma honor cord is to be draped over your commencement gown to signify your academic achievement in the field of nursing.' },
+      { title: 'Plain Key Pin - Sterling Silver', price: 62.00, image: 'https://publicmarketplaceimages.blob.core.windows.net/content/0000434_plain-key-pin---sterling-silver-.jpeg', category: 'Jewelry', description: "A symbol of tradition, the key pin features six stars, representing the society's six founders, crafted in black set in sterling silver." },
+      { title: "Men's Tungsten Ring", price: 62.00, image: "https://publicmarketplaceimages.blob.core.windows.net/content/0001922_men's-tungsten-ring.png", category: 'Jewelry', description: 'This simple yet sleek ring is made from Tungsten and features the Sigma logo.' },
+      { title: 'Surviving Your First Years as a Nurse Program - Online Course', price: 105.00, image: 'https://publicmarketplaceimages.blob.core.windows.net/content/0002243_surviving-your-first-years-as-a-nurse-program---online-course.png', category: 'NCPD', description: 'A course series designed to help new nurses navigate the challenges of their first years in practice.' },
+      { title: 'Self-Care for New and Student Nurses', price: 59.95, image: 'https://publicmarketplaceimages.blob.core.windows.net/content/0001983_self-care-for-new-and-student-nurses.jpeg', category: 'Books', description: 'Practical self-care strategies tailored for new and student nurses navigating the demands of the profession.' },
+      { title: 'Illuminating Florence', price: 19.95, image: 'https://publicmarketplaceimages.blob.core.windows.net/content/0000089_illuminating-florence.jpeg', category: 'Books', description: 'A reflection on the enduring legacy of Florence Nightingale in modern nursing.' },
+      { title: "The Healthcare Executive's Guide to Navigating the Surgical Suite", price: 44.95, image: "https://publicmarketplaceimages.blob.core.windows.net/content/0000219_the-healthcare-executive's-guide-to-navigating-the-surgical-suite.jpeg", category: 'Books', description: 'A guide for healthcare executives on managing the complexities of the surgical suite.' },
+      { title: "The Nurse's Healthcare Ethics Committee Handbook", price: 39.95, image: "https://publicmarketplaceimages.blob.core.windows.net/content/0000790_the-nurse's-healthcare-ethics-committee-handbook.jpeg", category: 'Books', description: "A practical handbook for nurses serving on healthcare ethics committees." },
+    ];
+    const params = new URLSearchParams(window.location.search);
+    const requested = params.get('p');
+    const selectedProduct = catalog.find(c => c.title === requested) || catalog[0];
+    const categoryHref = `Sigma Marketplace ${selectedProduct.category}.dc.html`;
+    const images = selectedProduct.images || [selectedProduct.image];
+
+    const baseTitle = selectedProduct.title;
+    const formatData = selectedProduct.multiFormat ? [
+      { label: 'Physical', sku: '978-1-64648-228-3', price: '$59.95', title: baseTitle, description: selectedProduct.description },
+      { label: 'PDF', sku: '978-1-64648-229-0', price: '$49.95', title: `${baseTitle} (PDF)`, description: `Instant digital download in PDF format. ${selectedProduct.description}` },
+      { label: 'EPUB', sku: '978-1-64648-230-6', price: '$49.95', title: `${baseTitle} (EPUB)`, description: `Instant digital download in EPUB format, optimized for e-readers. ${selectedProduct.description}` },
+      { label: 'MOBI', sku: '978-1-64648-231-3', price: '$49.95', title: `${baseTitle} (MOBI)`, description: `Instant digital download in MOBI format, compatible with Kindle devices. ${selectedProduct.description}` },
+    ] : [
+      { label: 'Physical', sku: `SM-${Math.abs(baseTitle.split('').reduce((h,c)=>h*31+c.charCodeAt(0)|0,0))%90000+10000}`, price: `$${selectedProduct.price.toFixed(2)}`, title: baseTitle, description: selectedProduct.description },
+    ];
+    const formats = formatData.map(f => ({
+      label: f.label,
+      sku: f.sku,
+      price: f.price,
+      selected: this.state.format === f.label,
+      itemStyle: `padding:14px 22px; display:flex; align-items:center; justify-content:space-between; gap:12px; font-family:'Jost',system-ui,-apple-system,sans-serif; font-weight:${this.state.format === f.label ? 700 : 500}; font-size:16px; color:${this.state.format === f.label ? '#5E50A1' : '#1C1656'}; cursor:pointer;`,
+      onSelect: () => this.setState({ format: f.label, formatDropdownOpen: false }),
+    }));
+    const currentFormat = formatData.find(f => f.label === this.state.format) || formatData[0];
+    const currentSku = currentFormat.sku;
+
+    const relatedBooks = catalog.filter(c => c.title !== selectedProduct.title).slice(0, 6).map(c => ({
+      title: c.title, image: c.image, price: `$${c.price.toFixed(2)}`, link: `Sigma Marketplace PDP.dc.html?p=${encodeURIComponent(c.title)}`,
+    }));
+
+    const accordionDefs = [
+      { key: 'description', title: 'Description', body: "Evidence-Informed Health Policy demystifies health policymaking and equips nurses and other healthcare professionals with the knowledge, tools, and confidence to navigate the first of many steps into health policy. This edition translates the EBP language of clinical decision-making into an evidence-informed health policy (EIHP) model as a foundation for integrating evidence into policymaking and leveraging dialogue with stakeholders." },
+      { key: 'toc', title: 'Table of Contents', body: 'Chapter 1: Health Policy Foundations — Chapter 2: The Evidence-Informed Health Policy Model — Chapter 3: Building the Case with Evidence — Chapter 4: Engaging Stakeholders — Chapter 5: From Policy to Practice.' },
+      { key: 'repository', title: 'Available on Sigma Repository', body: 'The companion facilitator guide and student workbook for this title are available through the Sigma Repository for adopting instructors.' },
+      { key: 'authors', title: 'About the Authors', body: 'Jacqueline M. Loversidge, PhD, RNC-AWHC, ANEF, is Associate Professor Emeritus of Clinical Nursing at The Ohio State University College of Nursing. Joyce Zurmehly, PhD, DNP, RN, NEA-BC, FAAN, is a Professor of Clinical Nursing at The Ohio State University College of Nursing.' },
+    ];
+    const accordionSections = accordionDefs.map(a => ({
+      title: a.title,
+      body: a.body,
+      open: this.state.openAccordion === a.key,
+      chevronTransform: this.state.openAccordion === a.key ? 'rotate(180deg)' : 'rotate(0deg)',
+      onToggle: () => this.setState(s => ({ openAccordion: s.openAccordion === a.key ? null : a.key })),
+    }));
+
+    return {
+      currentSku,
+      categoryLabel: selectedProduct.category,
+      categoryHref,
+      eyebrowText: selectedProduct.category,
+      productTitle: currentFormat.title,
+      productPrice: currentFormat.price,
+      productSummary: currentFormat.description,
+      activeImage: images[Math.min(this.state.activeImageIndex, images.length - 1)],
+      hasMultipleImages: images.length > 1,
+      imageCounter: `${Math.min(this.state.activeImageIndex, images.length - 1) + 1} / ${images.length}`,
+      thumbnails: images.map((img, i) => ({
+        image: img,
+        onSelect: () => this.setState({ activeImageIndex: i }),
+        style: `width:80px; height:80px; border-radius:8px; border:2px solid ${i === this.state.activeImageIndex ? '#5E50A1' : '#DDE6EC'}; background:#F5F6F8; padding:8px; cursor:pointer; overflow:hidden;`,
+      })),
+      prevImage: () => this.setState(s => ({ activeImageIndex: (s.activeImageIndex - 1 + images.length) % images.length })),
+      nextImage: () => this.setState(s => ({ activeImageIndex: (s.activeImageIndex + 1) % images.length })),
+      navItems: navItemsWithMenu2, formats, relatedBooks, accordionSections,
+      currentFormatLabel: currentFormat.label,
+      currentFormatPrice: currentFormat.price,
+      formatDropdownOpen: this.state.formatDropdownOpen,
+      formatDropdownRef: this.formatDropdownRef,
+      toggleFormatDropdown: () => this.setState(s => ({ formatDropdownOpen: !s.formatDropdownOpen })),
+      dropdownArrowRotate: this.state.formatDropdownOpen ? 'rotate(180deg)' : 'rotate(0deg)',
+      qty: this.state.qty,
+      incrementQty: () => this.setState(s => ({ qty: s.qty + 1 })),
+      decrementQty: () => this.setState(s => ({ qty: Math.max(1, s.qty - 1) })),
+      relatedRef: this.relatedRef,
+      scrollRelatedLeft: () => this.relatedRef.current && this.relatedRef.current.scrollBy({ left: -420, behavior: 'smooth' }),
+      scrollRelatedRight: () => this.relatedRef.current && this.relatedRef.current.scrollBy({ left: 420, behavior: 'smooth' }),
+      arrowStyleRelatedLeft: this.state.carousel.left ? `width:44px; height:44px; border-radius:50%; border:1.5px solid #1C1656; background:#FFFFFF; color:#1C1656; display:flex; align-items:center; justify-content:center; padding:0; box-shadow:0 10px 30px rgba(28,22,86,0.10); cursor:pointer;` : `width:44px; height:44px; border-radius:50%; border:1.5px solid #1C1656; background:#FFFFFF; color:#1C1656; display:flex; align-items:center; justify-content:center; padding:0; box-shadow:0 10px 30px rgba(28,22,86,0.10); cursor:not-allowed; opacity:0.35;`,
+      arrowStyleRelatedRight: this.state.carousel.right ? `width:44px; height:44px; border-radius:50%; border:none; background:#5E50A1; color:#FFFFFF; display:flex; align-items:center; justify-content:center; padding:0; box-shadow:0 10px 30px rgba(28,22,86,0.10); cursor:pointer;` : `width:44px; height:44px; border-radius:50%; border:none; background:#5E50A1; color:#FFFFFF; display:flex; align-items:center; justify-content:center; padding:0; box-shadow:0 10px 30px rgba(28,22,86,0.10); cursor:not-allowed; opacity:0.35;`,
+    };
+  }
+}
+</script>
+</body>
+</html>

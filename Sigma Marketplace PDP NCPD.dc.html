@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bitter:ital,wght@0,400;0,600;0,700;1,400&family=Jost:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<script src="./image-slot.js"></script>
+<style>
+  html { scroll-behavior:smooth; color-scheme:light; }
+  body { margin:0; background:#FFFFFF; }
+  a { color:#1593D7; text-decoration:none; }
+  a:hover { color:#8A278C; }
+  * { box-sizing:border-box; }
+  @media (max-width: 768px) { .sm-pdp-main { grid-template-columns:1fr !important; } .sm-header-row { flex-wrap:wrap; gap:16px !important; } .sm-nav { flex-wrap:wrap; } .sm-util-row { justify-content:center !important; flex-wrap:wrap; gap:14px !important; } .sm-search-box { width:100% !important; } }
+  @media (max-width: 480px) { .sm-footer-grid { grid-template-columns:1fr !important; } }
+  .sm-scroll-hide { scrollbar-width:none; -ms-overflow-style:none; }
+  .sm-scroll-hide::-webkit-scrollbar { display:none; }
+</style>
+</helmet>
+
+<div id="top" style="font-family:'Jost',system-ui,-apple-system,sans-serif; color:#1C1656; overflow-x:hidden; background-color:#FFFFFF;">
+
+  <div style="background:#F6F6F8; color:#1C1656; font-size:14px; font-weight:500;">
+    <div class="sm-util-row" style="max-width:1600px; margin:0 auto; padding:10px 40px; display:flex; justify-content:flex-end; align-items:center; gap:16px; flex-wrap:wrap; border-bottom:1px solid rgba(28,22,86,0.06);">
+      <div style="display:flex; align-items:center; gap:24px; flex-wrap:wrap; font-size:14px; font-weight:500; color:#1C1656;">
+        <a href="#top" style="color:#1C1656;" style-hover="color:#5E50A1; text-decoration:none;">Register</a>
+        <a href="#top" style="color:#1C1656; display:flex; align-items:center; gap:6px;" style-hover="color:#5E50A1; text-decoration:none;"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="8" r="4"></circle><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"></path></svg>Login</a>
+        <a href="#top" style="color:#1C1656; display:flex; align-items:center; gap:6px;" style-hover="color:#5E50A1; text-decoration:none;"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 20s-7-4.4-9.5-8.8C.8 8 2 4.5 5.5 3.8 8 3.3 10 4.5 12 7c2-2.5 4-3.7 6.5-3.2C22 4.5 23.2 8 21.5 11.2 19 15.6 12 20 12 20z"></path></svg>Wishlist (0)</a>
+        <a href="#top" style="color:#1C1656; display:flex; align-items:center; gap:6px;" style-hover="color:#5E50A1; text-decoration:none;"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="9" cy="20" r="1.4"></circle><circle cx="18" cy="20" r="1.4"></circle><path d="M2 3h2l2.4 12.2a2 2 0 002 1.8h8.6a2 2 0 002-1.6L21 8H6"></path></svg>Shopping Cart (0)</a>
+        <span style="width:1px; height:20px; background:rgba(28,22,86,0.3);"></span>
+        <a href="#top" style="background:#5E50A1; color:#FFFFFF; font-weight:500; font-size:14px; padding:8px 16px; border-radius:999px;" style-hover="background:rgba(94,80,161,0.9); color:#FFFFFF;">Join Sigma</a>
+      </div>
+    </div>
+  </div>
+
+  <div style="background:#FFFFFF; box-shadow:0 1px 0 #DDE6EC; position:relative; z-index:2;">
+    <div class="sm-header-row" style="max-width:1600px; margin:0 auto; padding:20px 40px; display:flex; align-items:center; gap:36px; flex-wrap:wrap;">
+      <a href="Sigma Marketplace Homepage.dc.html"><img src="sigma-marketplace-logo.png" alt="Sigma Marketplace" width="150" height="92" style="display:block; height:91px; width:auto;"></a>
+      <nav class="sm-nav" style="display:flex; align-items:center; gap:24px; flex-wrap:wrap; margin-left:auto;">
+        <sc-for list="{{ navItems }}" as="item" hint-placeholder-count="6">
+          <sc-if value="{{ item.hasMenu }}" hint-placeholder-val="{{ false }}">
+            <div style="position:relative; display:flex; align-items:center; align-self:stretch;" onMouseEnter="{{ item.onOpen }}" onMouseLeave="{{ item.onClose }}">
+              <a href="{{ item.href }}" style="{{ item.style }}" style-hover="color:#5E50A1; border-bottom:5px solid #00B9DD; text-decoration:none;">{{ item.label }}</a>
+              <sc-if value="{{ item.menuOpen }}" hint-placeholder-val="{{ false }}">
+                <div style="position:absolute; top:calc(100% + 1px); left:0; background:#1C1656; border-radius:10px; box-shadow:0 24px 48px -8px rgba(0,0,0,0.45), 0 8px 20px -8px rgba(0,0,0,0.35); padding:32px; display:flex; flex-direction:column; gap:16px; z-index:20; min-width:260px;">
+                  <sc-for list="{{ item.subLinks }}" as="cat" hint-placeholder-count="4">
+                    <a href="{{ cat.href }}" style="font-family:'Jost',system-ui,-apple-system,sans-serif; font-size:15px; font-weight:700; color:#FFFFFF; white-space:nowrap;" style-hover="color:#00B9DD; text-decoration:none;">{{ cat.label }}</a>
+                  </sc-for>
+                </div>
+              </sc-if>
+            </div>
+          </sc-if>
+          <sc-if value="{{ item.noMenu }}" hint-placeholder-val="{{ true }}">
+            <a href="{{ item.href }}" style="{{ item.style }}" style-hover="color:#5E50A1; border-bottom:5px solid #00B9DD; text-decoration:none;">{{ item.label }}</a>
+          </sc-if>
+        </sc-for>
+      </nav>
+      <div class="sm-search-box" style="display:flex; align-items:center; background:#EFF7FA; border-radius:999px; padding:9px 16px; gap:8px; width:220px;">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#5E50A1" stroke-width="1.8"><circle cx="10.5" cy="10.5" r="6.5"></circle><path d="M20 20l-4.3-4.3"></path></svg>
+        <input placeholder="Search" style="border:none; background:transparent; outline:none; font-family:'Jost',system-ui,-apple-system,sans-serif; font-size:15px; color:#1C1440; width:100%;">
+      </div>
+    </div>
+  </div>
+
+  <div style="max-width:1600px; margin:0 auto; padding:24px 40px 0; font-family:'Bitter','Bitter Fallback',Georgia,serif; font-size:15px; color:#5A5384;">
+    <a href="Sigma Marketplace Homepage.dc.html" style="color:#5A5384;" style-hover="color:#5E50A1;">Home</a> &nbsp;/&nbsp; <a href="Sigma Marketplace NCPD.dc.html" style="color:#5A5384;" style-hover="color:#5E50A1;">NCPD</a> &nbsp;/&nbsp; <span style="color:#1C1656;">{{ product.title }}</span>
+  </div>
+
+  <div class="sm-pdp-main" style="max-width:1600px; margin:0 auto; padding:24px 40px 0; display:grid; grid-template-columns:2fr 1fr; gap:56px; align-items:start;">
+    <div style="min-width:0;">
+      <div style="position:relative; height:480px; background:#1C1656; border-radius:10px; overflow:hidden; margin-bottom:16px;">
+        <image-slot id="ncpd-pdp-hero" src="{{ activeImage }}" shape="rect" fit="contain" placeholder="{{ product.title }}" style="width:100%; height:100%;"></image-slot>
+        <sc-if value="{{ hasMultipleImages }}" hint-placeholder-val="{{ false }}">
+          <button onClick="{{ prevImage }}" aria-label="Previous image" style="position:absolute; left:12px; top:50%; transform:translateY(-50%); width:44px; height:44px; border-radius:50%; border:1.5px solid #1C1656; background:#FFFFFF; box-shadow:0 10px 30px rgba(28,22,86,0.10); color:#1C1656; display:flex; align-items:center; justify-content:center; padding:0; cursor:pointer;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"></path></svg></button>
+          <button onClick="{{ nextImage }}" aria-label="Next image" style="position:absolute; right:12px; top:50%; transform:translateY(-50%); width:44px; height:44px; border-radius:50%; border:none; background:#5E50A1; box-shadow:0 10px 30px rgba(28,22,86,0.10); color:#FFFFFF; display:flex; align-items:center; justify-content:center; padding:0; cursor:pointer;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"></path></svg></button>
+          <div style="position:absolute; right:16px; bottom:16px; background:#FFFFFF; border-radius:999px; padding:4px 14px; font-family:'Jost',system-ui,-apple-system,sans-serif; font-size:13px; font-weight:600; color:#1C1656; box-shadow:0 4px 12px rgba(28,22,86,0.15);">{{ imageCounter }}</div>
+        </sc-if>
+      </div>
+      <sc-if value="{{ hasMultipleImages }}" hint-placeholder-val="{{ false }}">
+        <div style="display:flex; gap:12px;">
+          <sc-for list="{{ thumbnails }}" as="t" hint-placeholder-count="2">
+            <button onClick="{{ t.onSelect }}" style="{{ t.style }}"><image-slot id="ncpd-thumb-{{ $index }}" src="{{ t.image }}" shape="rect" fit="contain" placeholder="Thumb" style="width:100%; height:100%;"></image-slot></button>
+          </sc-for>
+        </div>
+      </sc-if>
+    </div>
+    <div style="min-width:0;">
+      <div style="font-family:'Jost',system-ui,-apple-system,sans-serif; font-size:13px; font-weight:700; letter-spacing:0.16em; text-transform:uppercase; color:#5E50A1; margin-bottom:14px;">NCPD</div>
+      <div style="font-family:'Jost',system-ui,-apple-system,sans-serif; font-size:34px; font-weight:800; letter-spacing:-0.02em; color:#1C1656; line-height:1.25; margin-bottom:14px; overflow-wrap:break-word;">{{ product.title }}</div>
+      <div style="font-family:'Jost',system-ui,-apple-system,sans-serif; font-size:30px; font-weight:800; color:#1593D6; margin-bottom:20px;">{{ product.price }}</div>
+      <div style="font-family:'Bitter','Bitter Fallback',Georgia,serif; font-size:18px; line-height:1.65; color:#1C1440; margin-bottom:32px;">{{ product.description }}</div>
+
+      <div style="font-family:'Bitter','Bitter Fallback',Georgia,serif; font-size:14px; font-weight:700; color:#5A5384; margin-bottom:20px;">SKU: {{ product.sku }}</div>
+
+      <div style="display:flex; align-items:center; gap:16px;">
+        <div style="display:flex; align-items:center; border:1.5px solid #DDE6EC; border-radius:999px; overflow:hidden; background:#FFFFFF;">
+          <button onClick="{{ decrementQty }}" style="width:40px; height:48px; border:none; background:transparent; color:#1C1656; font-size:16px; font-weight:700; cursor:pointer;">−</button>
+          <div style="width:28px; text-align:center; font-family:'Jost',system-ui,-apple-system,sans-serif; font-weight:700; color:#1C1656; font-size:15px;">{{ qty }}</div>
+          <button onClick="{{ incrementQty }}" style="width:40px; height:48px; border:none; background:transparent; color:#1C1656; font-size:16px; font-weight:700; cursor:pointer;">+</button>
+        </div>
+        <button style="background:#5E50A1; color:#FFFFFF; font-family:'Jost',system-ui,-apple-system,sans-serif; font-weight:500; font-size:15px; border:none; border-radius:999px; padding:16px 32px; cursor:pointer;" style-hover="background:rgba(94,80,161,0.9); color:#FFFFFF;">Add to Cart</button>
+      </div>
+    </div>
+  </div>
+
+  <div style="max-width:1600px; margin:0 auto; padding:48px 40px 0; display:grid; grid-template-columns:2fr 1fr; gap:56px;">
+    <div>
+      <sc-for list="{{ accordionSections }}" as="sec" hint-placeholder-count="5">
+        <div style="background:#FFFFFF; border-radius:10px; box-shadow:0 10px 30px rgba(28,22,86,0.10); margin-bottom:16px; overflow:hidden;">
+          <div onClick="{{ sec.onToggle }}" style="cursor:pointer; display:flex; justify-content:space-between; align-items:center; padding:22px 24px; font-family:'Jost',system-ui,-apple-system,sans-serif; font-weight:700; font-size:19px; color:#1C1656;">
+            <span>{{ sec.title }}</span><span style="color:#5E50A1; transition:transform 0.2s; transform:{{ sec.chevronTransform }};">▾</span>
+          </div>
+          <sc-if value="{{ sec.open }}" hint-placeholder-val="{{ false }}">
+            <div style="padding:0 24px 24px; font-family:'Bitter','Bitter Fallback',Georgia,serif; font-size:17px; line-height:1.75; color:#1C1440;">{{ sec.body }}</div>
+          </sc-if>
+        </div>
+      </sc-for>
+    </div>
+    <div></div>
+  </div>
+
+  <div style="padding:56px 40px;">
+    <div style="max-width:1600px; margin:0 auto;">
+      <div style="font-family:'Jost',system-ui,-apple-system,sans-serif; font-size:13px; font-weight:700; letter-spacing:0.16em; text-transform:uppercase; color:#5E50A1; margin-bottom:12px;">Customers Also Bought</div>
+      <div style="font-family:'Jost',system-ui,-apple-system,sans-serif; font-size:40px; font-weight:800; letter-spacing:-0.02em; color:#1C1656; margin-bottom:32px;">Related products</div>
+      <div style="position:relative;">
+        <div ref="{{ relatedRef }}" class="sm-scroll-hide" style="display:flex; gap:28px; overflow-x:auto; scroll-behavior:smooth; scroll-snap-type:x mandatory; padding:2px 2px 8px;">
+          <sc-for list="{{ related }}" as="r" hint-placeholder-count="4">
+            <div style="flex:0 0 calc((100% - 140px)/6); min-width:180px; scroll-snap-align:start; background:#FFFFFF; border-radius:10px; box-shadow:0 10px 30px rgba(28,22,86,0.10); overflow:hidden;">
+              <a href="{{ r.link }}" style="display:block; aspect-ratio:4/3; overflow:hidden; background:#EFF7FA;">
+                <image-slot id="ncpd-rel-{{ $index }}" src="{{ r.image }}" shape="rect" fit="contain" placeholder="{{ r.title }}" style="width:100%; height:100%;"></image-slot>
+              </a>
+              <div style="padding:16px;">
+                <div style="font-family:'Jost',system-ui,-apple-system,sans-serif; font-weight:700; font-size:15px; line-height:1.35; color:#1C1656; min-height:42px; display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden;">{{ r.title }}</div>
+                <div style="font-family:'Jost',system-ui,-apple-system,sans-serif; font-weight:800; font-size:16px; color:#1593D6; margin-top:8px;">{{ r.price }}</div>
+              </div>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+      <div style="display:flex; justify-content:flex-end; gap:10px; margin-top:20px;">
+        <button onClick="{{ scrollRelatedLeft }}" style="{{ arrowStyleRelatedLeft }}"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"></path></svg></button>
+        <button onClick="{{ scrollRelatedRight }}" style="{{ arrowStyleRelatedRight }}"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"></path></svg></button>
+      </div>
+    </div>
+  </div>
+
+  <div style="position:relative; height:120px; overflow:hidden; margin-top:40px;">
+    <svg preserveAspectRatio="none" viewBox="0 0 1684 102" style="position:absolute; inset:0; width:100%; height:100%; display:block;">
+      <path fill="#1C1656" d="M0 93V102H1684V0C1380.12 4.59259 621.479 29.6222 0 93Z"></path>
+      <path fill="none" stroke="#00B9DD" stroke-width="4" stroke-linecap="round" d="M2 64.8288C204.004 49.8762 752.782 3.85989 1682 18.8125"></path>
+      <path fill="none" stroke="#8A278C" stroke-width="4" stroke-linecap="round" d="M2 11.0352C311.74 11.826 1081.37 30.7262 1682 100.001"></path>
+    </svg>
+  </div>
+
+  <div style="background:#1C1656; color:#E4E9F6; position:relative; overflow:hidden;">
+    <div style="max-width:1600px; margin:0 auto; padding:70px 40px 20px; position:relative;">
+      <div class="sm-footer-grid" style="display:grid; grid-template-columns:1.2fr 1fr 1fr 1fr; gap:40px; padding-bottom:32px;">
+        <div style="height:100%; display:flex; flex-direction:column;">
+          <img src="sigma-marketplace-logo-footer.png" alt="Sigma Marketplace" width="150" height="92" style="display:block; width:232px; height:auto;">
+          <div style="font-family:'Jost',system-ui,-apple-system,sans-serif; font-weight:700; color:#FFFFFF; margin:22px 0 10px; font-size:15px;">Connect with Sigma Nursing</div>
+          <div style="display:flex; gap:8px; margin-top:auto;">
+            <a href="https://facebook.com/sigmanursing" aria-label="Facebook" style="width:40px; height:40px; border-radius:50%; display:flex; align-items:center; justify-content:center; background-color:#5E50A1;"><svg width="18" height="18" viewBox="0 0 24 24" fill="#FFFFFF"><path d="M13 22v-9h3l.5-4H13V6.5c0-1.1.3-1.9 1.9-1.9H17V1.1C16.6 1 15.4 1 14 1c-2.9 0-4.9 1.8-4.9 5v3H6v4h3.1v9z"></path></svg></a>
+            <a href="https://www.linkedin.com/company/sigma-theta-tau-international/" aria-label="LinkedIn" style="width:40px; height:40px; border-radius:50%; display:flex; align-items:center; justify-content:center; background-color:#5E50A1;"><svg width="18" height="18" viewBox="0 0 24 24" fill="#FFFFFF"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9h4v12H3zM9 9h3.8v1.7h.05c.53-1 1.83-1.7 3.15-1.7C19.2 9 20 11 20 13.9V21h-4v-6.3c0-1.5-.03-3.4-2.1-3.4-2.1 0-2.4 1.6-2.4 3.3V21H9z"></path></svg></a>
+            <a href="https://instagram.com/sigmanursing" aria-label="Instagram" style="width:40px; height:40px; border-radius:50%; display:flex; align-items:center; justify-content:center; background-color:#5E50A1;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"></rect><circle cx="12" cy="12" r="4"></circle><circle cx="17.5" cy="6.5" r="0.6" fill="#FFFFFF" stroke="none"></circle></svg></a>
+            <a href="https://www.youtube.com/@SigmaHeadquarters" aria-label="YouTube" style="width:40px; height:40px; border-radius:50%; display:flex; align-items:center; justify-content:center; background-color:#5E50A1;"><svg width="18" height="18" viewBox="0 0 24 24" fill="#FFFFFF"><path d="M23 12s0-3.6-.5-5.3a3 3 0 0 0-2.1-2.1C18.7 4 12 4 12 4s-6.7 0-8.4.6a3 3 0 0 0-2.1 2.1C1 8.4 1 12 1 12s0 3.6.5 5.3a3 3 0 0 0 2.1 2.1C5.3 20 12 20 12 20s6.7 0 8.4-.6a3 3 0 0 0 2.1-2.1C23 15.6 23 12 23 12z" fill="none" stroke="#FFFFFF" stroke-width="1.6"></path><path d="M10 9l6 3-6 3z" fill="#FFFFFF"></path></svg></a>
+            <a href="https://thecircle.sigmanursing.org/home" aria-label="The Circle" style="width:40px; height:40px; border-radius:50%; display:flex; align-items:center; justify-content:center; background-color:#5E50A1;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="1.8"><circle cx="12" cy="12" r="9"></circle><circle cx="12" cy="12" r="3.2" fill="#FFFFFF" stroke="none"></circle></svg></a>
+          </div>
+        </div>
+        <div style="grid-column:2 / span 3; height:100%;">
+          <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:40px; height:100%;">
+            <div style="display:flex; flex-direction:column; height:100%; padding-top:71px; position:relative;">
+              <div style="font-family:'Bitter','Bitter Fallback',Georgia,serif; font-size:15px; color:#E4E9F6; line-height:1.6; margin-bottom:16px;">550 W. North St., Suite 120<br>Indianapolis, IN 46202<br>United States</div>
+              <div style="font-family:'Bitter','Bitter Fallback',Georgia,serif; font-size:15px; color:#E4E9F6; line-height:1.6; margin-bottom:16px;"><a href="tel:+18886347575" style="color:#E4E9F6;" style-hover="color:rgba(255,255,255,0.7); text-decoration:none;">888.634.7575</a> (US/CA toll-free)<br><a href="tel:+13176348171" style="color:#E4E9F6;" style-hover="color:rgba(255,255,255,0.7); text-decoration:none;">+1.317.634.8171</a> (International)</div>
+              <div style="font-family:'Bitter','Bitter Fallback',Georgia,serif; font-size:15px; color:#E4E9F6; line-height:1.6; white-space:nowrap; margin-top:auto;">Monday–Friday | 8:00 a.m. – 5:00 p.m. ET</div>
+              <div style="position:absolute; left:calc(100% + 40px); bottom:0; display:flex; flex-direction:column; gap:6px; white-space:nowrap;">
+                <span style="white-space:nowrap;"><a href="#" style="color:#FFFFFF; font-size:14px;" style-hover="color:rgba(255,255,255,0.7); text-decoration:none;">Contact Us</a> &nbsp;|&nbsp; <a href="#" style="color:#FFFFFF; font-size:14px;" style-hover="color:rgba(255,255,255,0.7); text-decoration:none;">Privacy Policy</a> &nbsp;|&nbsp; <a href="#" style="color:#FFFFFF; font-size:14px;" style-hover="color:rgba(255,255,255,0.7); text-decoration:none;">Terms of Service</a></span>
+                <span style="font-size:14px; color:#FFFFFF; white-space:nowrap;">© 2026 Sigma Theta Tau International Honor Society of Nursing. All rights reserved.</span>
+              </div>
+            </div>
+            <div style="display:flex; flex-direction:column; gap:8px; padding-top:71px;">
+              <a href="#" style="color:#FFFFFF; font-size:16px; font-family:'Jost',system-ui,-apple-system,sans-serif; font-weight:600; white-space:nowrap;" style-hover="color:rgba(255,255,255,0.7); text-decoration:none;">My Account</a>
+              <a href="#" style="color:#FFFFFF; font-size:16px; font-family:'Jost',system-ui,-apple-system,sans-serif; font-weight:600; white-space:nowrap;" style-hover="color:rgba(255,255,255,0.7); text-decoration:none;">Shipping and Returns</a>
+              <a href="#" style="color:#FFFFFF; font-size:16px; font-family:'Jost',system-ui,-apple-system,sans-serif; font-weight:600; white-space:nowrap;" style-hover="color:rgba(255,255,255,0.7); text-decoration:none;">Frequently Asked Questions</a>
+            </div>
+            <div style="display:flex; flex-direction:column; gap:8px; padding-top:71px;">
+              <a href="#" style="color:#FFFFFF; font-size:16px; font-family:'Jost',system-ui,-apple-system,sans-serif; font-weight:600; white-space:nowrap;" style-hover="color:rgba(255,255,255,0.7); text-decoration:none;">Adoptable Books and Resources</a>
+              <a href="#" style="color:#FFFFFF; font-size:16px; font-family:'Jost',system-ui,-apple-system,sans-serif; font-weight:600; white-space:nowrap;" style-hover="color:rgba(255,255,255,0.7); text-decoration:none;">Alliances and Partnerships</a>
+              <a href="#" style="color:#FFFFFF; font-size:16px; font-family:'Jost',system-ui,-apple-system,sans-serif; font-weight:600; white-space:nowrap;" style-hover="color:rgba(255,255,255,0.7); text-decoration:none;">Advertisers</a>
+            </div>
+          </div>
+        </div>
+    </div>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { qty: 1, openAccordion: 'description', carousel: { left: false, right: true }, activeImageIndex: 0 , openNavMenu: null };
+  relatedRef = React.createRef();
+
+  componentDidMount() {
+    const el = this.relatedRef.current;
+    if (!el) return;
+    const update = () => {
+      const { scrollLeft, scrollWidth, clientWidth } = el;
+      this.setState({ carousel: { left: scrollLeft > 2, right: scrollLeft < scrollWidth - clientWidth - 2 } });
+    };
+    el.addEventListener('scroll', update, { passive: true });
+    window.addEventListener('resize', update);
+    update();
+  }
+
+  
+  openNavMenuItem(label) {
+    if (this.navMenuTimer) clearTimeout(this.navMenuTimer);
+    this.setState({ openNavMenu: label });
+  }
+  closeNavMenuItem() {
+    if (this.navMenuTimer) clearTimeout(this.navMenuTimer);
+    this.navMenuTimer = setTimeout(() => this.setState({ openNavMenu: null }), 250);
+  }
+
+  renderVals() {
+    const navy = '#1C1656', purple = '#5E50A1', sky = '#00B9DD';
+    const navItems = ['Sale','NCPD','Books','Jewelry','Adoptable Resources'].map(label => ({
+      label, href: `Sigma Marketplace ${label}.dc.html`,
+      style: label === 'NCPD'
+        ? `color:${navy}; font-family:'Jost',system-ui,-apple-system,sans-serif; font-weight:700; font-size:1.125rem; padding-bottom:4px; border-bottom:5px solid ${sky};`
+        : `color:${navy}; font-family:'Jost',system-ui,-apple-system,sans-serif; font-weight:500; font-size:1.125rem; padding-bottom:4px; border-bottom:5px solid transparent;`,
+    })).concat([{ label: 'SigmaNursing.org', href: 'https://www.sigmanursing.org/', style: `color:${navy}; font-family:'Jost',system-ui,-apple-system,sans-serif; font-weight:500; font-size:1.125rem; padding-bottom:4px; border-bottom:5px solid transparent;` }]);
+    const subCategoryData = {
+      NCPD: { page: 'Sigma Marketplace NCPD.dc.html', subs: ["Lifestyle, Society, & Culture","Education Resources","Technology Insights & Answers","Research Guides & Tools","Leadership Support & Training"] },
+      Books: { page: 'Sigma Marketplace Books.dc.html', subs: ["Leadership Support & Training","Career Advice","Education Resources","Clinical Information"] },
+      Jewelry: { page: 'Sigma Marketplace Jewelry.dc.html', subs: ["Necklaces","Pins","Charms"] },
+      'Adoptable Resources': { page: 'Sigma Marketplace Adoptable Resources.dc.html', subs: ["Clinical","Academia"] },
+    };
+    const navItemsWithMenu2 = navItems.map(n => {
+      const menuData = subCategoryData[n.label];
+      return {
+        ...n,
+        hasMenu: !!menuData, noMenu: !menuData,
+        menuOpen: this.state.openNavMenu === n.label,
+        style: this.state.openNavMenu === n.label ? n.style.replace('5px solid transparent', '5px solid #00B9DD') : n.style,
+        onOpen: () => this.openNavMenuItem(n.label),
+        onClose: () => this.closeNavMenuItem(),
+        subLinks: menuData ? menuData.subs.map(s => ({ label: s, href: `${menuData.page}?sub=${encodeURIComponent(s)}` })) : [],
+      };
+    });
+
+    const navItemsWithMenu = navItems.map(n => ({ ...n, hasMenu: n.label === 'Sale', noMenu: n.label !== 'Sale' }));
+
+
+    const allProducts = [
+      { title: 'The Well-Being Effect: When Interprofessional Teams Work as One - Online Course', price: '$0.00', sku: 'WEB73V1', image: 'https://publicmarketplaceimages.blob.core.windows.net/content/0002226_the-well-being-effect-when-interprofessional-teams-work-as-one---online-course.png', description: 'Healthy teams make healthy workplaces. Explore how interprofessional collaboration, anchored in patient partnership, shared goals, and coordinated work, reduces individual burden and renews a shared sense of purpose and connection in care.' },
+      { title: 'Not for Sale: Combating Human Trafficking in Global Nurse Recruitment - Online Course', price: '$0.00', sku: 'WEB72V1', image: 'https://publicmarketplaceimages.blob.core.windows.net/content/0002225_not-for-sale-combating-human-trafficking-in-global-nurse-recruitment---online-course.png', description: 'Human trafficking touches global nurse recruitment in ways many nurses never expect. Explore how to recognize the warning signs and combat exploitative recruitment practices.' },
+      { title: "The Real Problem: Students Aren't Failing Because They Don't Know Enough—They're Failing Because They Don't Know How to Prepare - Online Course", price: '$0.00', sku: 'WEB71V1', image: "https://publicmarketplaceimages.blob.core.windows.net/content/0002224_the-real-problem-students-aren't-failing-because-they-don't-know-enough—they're-failing-because-they.png", description: 'Rethink student struggles through the lens of preparation, not knowledge gaps, and build strategies that help students study smarter.' },
+      { title: 'Technology and Innovation in Healthcare - Online Course', price: '$0.00', sku: 'TECHV1', image: 'https://publicmarketplaceimages.blob.core.windows.net/content/0002219_technology-and-innovation-in-healthcare---online-course.png', description: 'Explore emerging technology and innovation reshaping healthcare delivery and nursing practice.' },
+      { title: 'August Advantage: Save Hours on Course Prep with AI Before Students Arrive - Online Course', price: '$0.00', sku: 'WEB67V1', image: 'https://publicmarketplaceimages.blob.core.windows.net/content/0002210_august-advantage-save-hours-on-course-prep-with-ai-before-students-arrive---online-course.png', description: 'Learn practical AI tools and workflows that save nurse educators hours of course prep time before the semester starts.' },
+      { title: 'Demystifying Sigma Research Grant Applications - Online Course', price: '$0.00', sku: 'WEB66V1', image: 'https://publicmarketplaceimages.blob.core.windows.net/content/0002209_demystifying-sigma-research-grant-applications---online-course.png', description: 'A practical walkthrough of the Sigma research grant application process, from eligibility to submission.' },
+      { title: 'Mentorship: Cultivating Nursing Excellence - Online Course', price: '$25.00', sku: 'MCNFrontV1', image: 'https://publicmarketplaceimages.blob.core.windows.net/content/0002202_mentorship-cultivating-nursing-excellence---online-course.png', description: 'Build effective mentoring relationships that cultivate excellence and support career growth across the nursing profession.' },
+      { title: 'How to Advance from Shared to Professional Governance - Online Course', price: '$25.00', sku: 'GOV01V1', image: 'https://publicmarketplaceimages.blob.core.windows.net/content/0002199_how-to-advance-from-shared-to-professional-governance-online-course.png', description: 'A roadmap for evolving shared governance structures into mature professional governance models.' },
+      { title: "Digital Nursing Education, Research, and Practice: Policy Insights From the WHO State of the World's Nursing 2025 Report - Online Course", price: '$0.00', sku: 'WEB65V1', image: 'https://publicmarketplaceimages.blob.core.windows.net/content/0002192_digital-nursing-education-research-and-practice-policy-insights-from-the-who-state-of-the-worlds-nur.png', description: "Policy insights drawn from the WHO's State of the World's Nursing 2025 report on digital nursing education, research, and practice." },
+    ];
+    const params = new URLSearchParams(window.location.search);
+    const requested = params.get('p');
+    const product = allProducts.find(p => p.title === requested) || allProducts[allProducts.length - 1];
+
+    const accordionDefs = [
+      { key: 'description', title: 'Description', body: product.description },
+      { key: 'outcomes', title: 'Learning Outcomes', body: 'After participating in this course, learners will be able to: describe key concepts covered in this course; apply evidence-informed strategies to their own nursing practice; identify at least one actionable change to implement in their workplace.' },
+      { key: 'accreditation', title: 'Accreditation', body: "Sigma Theta Tau International Honor Society of Nursing (Sigma) is accredited as a provider of nursing continuing professional development by the American Nurses Credentialing Center's Commission on Accreditation." },
+      { key: 'reviews', title: 'Reviews', body: 'Be the first to review this course.' },
+    ];
+    const accordionSections = accordionDefs.map(a => ({
+      title: a.title, body: a.body,
+      open: this.state.openAccordion === a.key,
+      chevronTransform: this.state.openAccordion === a.key ? 'rotate(180deg)' : 'rotate(0deg)',
+      onToggle: () => this.setState(s => ({ openAccordion: s.openAccordion === a.key ? null : a.key })),
+    }));
+
+    const related = allProducts.filter(p => p.title !== product.title).slice(0, 6).map(p => ({
+      title: p.title, price: p.price, image: p.image, link: `Sigma Marketplace PDP NCPD.dc.html?p=${encodeURIComponent(p.title)}`,
+    }));
+
+    const images = product.images || (product.image ? [product.image] : []);
+    return {
+      navItems: navItemsWithMenu2, accordionSections, related, product,
+      activeImage: images[Math.min(this.state.activeImageIndex, images.length - 1)],
+      hasMultipleImages: images.length > 1,
+      imageCounter: `${Math.min(this.state.activeImageIndex, images.length - 1) + 1} / ${images.length}`,
+      thumbnails: images.map((img, i) => ({
+        image: img,
+        onSelect: () => this.setState({ activeImageIndex: i }),
+        style: `width:80px; height:80px; border-radius:8px; border:2px solid ${i === this.state.activeImageIndex ? '#5E50A1' : '#DDE6EC'}; background:#F5F6F8; padding:8px; cursor:pointer; overflow:hidden;`,
+      })),
+      prevImage: () => this.setState(s => ({ activeImageIndex: (s.activeImageIndex - 1 + images.length) % images.length })),
+      nextImage: () => this.setState(s => ({ activeImageIndex: (s.activeImageIndex + 1) % images.length })),
+      qty: this.state.qty,
+      incrementQty: () => this.setState(s => ({ qty: s.qty + 1 })),
+      decrementQty: () => this.setState(s => ({ qty: Math.max(1, s.qty - 1) })),
+      relatedRef: this.relatedRef,
+      scrollRelatedLeft: () => this.relatedRef.current && this.relatedRef.current.scrollBy({ left: -420, behavior: 'smooth' }),
+      scrollRelatedRight: () => this.relatedRef.current && this.relatedRef.current.scrollBy({ left: 420, behavior: 'smooth' }),
+      arrowStyleRelatedLeft: this.state.carousel.left ? `width:44px; height:44px; border-radius:50%; border:1.5px solid #1C1656; background:#FFFFFF; color:#1C1656; display:flex; align-items:center; justify-content:center; padding:0; box-shadow:0 10px 30px rgba(28,22,86,0.10); cursor:pointer;` : `width:44px; height:44px; border-radius:50%; border:1.5px solid #1C1656; background:#FFFFFF; color:#1C1656; display:flex; align-items:center; justify-content:center; padding:0; box-shadow:0 10px 30px rgba(28,22,86,0.10); cursor:not-allowed; opacity:0.35;`,
+      arrowStyleRelatedRight: this.state.carousel.right ? `width:44px; height:44px; border-radius:50%; border:none; background:${purple}; color:#FFFFFF; display:flex; align-items:center; justify-content:center; padding:0; box-shadow:0 10px 30px rgba(28,22,86,0.10); cursor:pointer;` : `width:44px; height:44px; border-radius:50%; border:none; background:${purple}; color:#FFFFFF; display:flex; align-items:center; justify-content:center; padding:0; box-shadow:0 10px 30px rgba(28,22,86,0.10); cursor:not-allowed; opacity:0.35;`,
+    };
+  }
+}
+
+</script>
+</body>
+</html>
